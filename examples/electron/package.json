@@ -100,8 +100,8 @@
     "@theia/workspace": "1.66.0"
   },
   "scripts": {
-    "build": "theiaext build && npm run -s bundle",
-    "bundle": "npm run rebuild && theia build --mode development",
+    "build": "NODE_OPTIONS=--max-old-space-size=8192 theiaext build && NODE_OPTIONS=--max-old-space-size=8192 npm run -s bundle",
+    "bundle": "npm run rebuild && NODE_OPTIONS=--max-old-space-size=8192 theia build --mode development",
     "clean": "theia clean",
     "compile": "tsc -b",
     "lint": "theiaext lint",
@@ -111,7 +111,7 @@
     "start:watch": "concurrently --kill-others -n tsc,bundle,run -c red,yellow,green \"tsc -b -w --preserveWatchOutput\" \"npm run -s watch:bundle\" \"npm run -s start\"",
     "test": "electron-mocha --timeout 60000 \"./lib/test/**/*.espec.js\"",
     "watch": "concurrently --kill-others -n tsc,bundle -c red,blue \"tsc -b -w --preserveWatchOutput\" \"npm run -s watch:bundle\"",
-    "watch:bundle": "theia build --watch --mode development",
+    "watch:bundle": "NODE_OPTIONS=--max-old-space-size=8192 theia build --watch --mode development",
     "watch:compile": "tsc -b -w"
   },
   "devDependencies": {
