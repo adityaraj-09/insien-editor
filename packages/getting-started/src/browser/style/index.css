@@ -14,123 +14,329 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0
  ********************************************************************************/
 
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Root Variables - Color Palette */
+:root {
+  --color-primary: hsl(210, 100%, 65%);
+  --color-background-light: hsl(0, 0%, 100%);
+  --color-background-dark: hsl(220, 14%, 10%);
+  --color-surface-dark: hsl(220, 13%, 14%);
+  --color-border-dark: hsl(220, 10%, 22%);
+  --color-neutral-100: hsl(0, 0%, 95%);
+  --color-neutral-200: hsl(0, 0%, 85%);
+  --color-neutral-300: hsl(0, 0%, 75%);
+  --color-neutral-400: hsl(0, 0%, 60%);
+  --color-neutral-500: hsl(0, 0%, 50%);
+}
+
+/* Base Styles */
 html,
 body {
-  font-family: var(--theia-ui-font-family);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.col {
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-grid {
-  display: flex;
-}
-
-.gs-action-container {
-  line-height: 20px;
-}
-
-.gs-action-details {
-  padding-left: 5px;
-  color: var(--theia-descriptionForeground);
-}
-
+/* Main Container */
 .gs-container {
   display: flex;
+  min-height: 100%;
+  background-color: var(--color-background-dark);
+  color: var(--color-neutral-200);
+}
+
+.gs-main {
+  flex-grow: 1;
+  display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.gs-content-wrapper {
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-.gs-content-container {
-  padding: 20px;
+/* Header */
+.gs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  width: 100%;
 }
 
-.gs-content-container a {
+.gs-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gs-logo {
+  color: var(--color-neutral-200);
+  width: 36px;
+  height: 36px;
+}
+
+.gs-app-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-neutral-100);
+  margin: 0;
+}
+
+.gs-settings-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-surface-dark);
+  border: 1px solid var(--color-border-dark);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: var(--color-neutral-400);
+  font-size: 1.125rem;
+}
+
+.gs-settings-btn:hover {
+  background-color: var(--color-border-dark);
+}
+
+/* Main Content Layout */
+.gs-content-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.gs-layout {
+  display: flex;
+  gap: 3rem;
+  flex-grow: 1;
+}
+
+.gs-actions-column {
+  flex: 0 0 33.333%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.gs-recent-column {
+  flex: 0 0 66.666%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Action Cards */
+.gs-action-card {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  border-radius: 8px;
+  background-color: var(--color-surface-dark);
+  border: 1px solid var(--color-border-dark);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.gs-action-card:hover {
+  border-color: var(--color-primary);
+}
+
+.gs-action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: var(--color-border-dark);
+  margin-right: 1.25rem;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.gs-action-card:hover .gs-action-icon {
+  background-color: var(--color-primary);
+}
+
+.gs-action-icon i {
+  font-size: 1.5rem;
+  color: var(--color-neutral-300);
+  transition: color 0.2s;
+}
+
+.gs-action-card:hover .gs-action-icon i {
+  color: white;
+}
+
+.gs-action-content {
+  flex: 1;
+}
+
+.gs-action-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-100);
+  margin: 0 0 0.25rem 0;
+}
+
+.gs-action-description {
+  font-size: 0.875rem;
+  color: var(--color-neutral-400);
+  margin: 0;
+}
+
+/* Recent Projects Section */
+.gs-recent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.gs-recent-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-neutral-300);
+  margin: 0;
+}
+
+.gs-view-all {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  text-decoration: none;
   cursor: pointer;
 }
 
-.gs-header h1 {
-  flex: 1;
-  font-weight: 600;
-}
-
-.gs-hr {
-  background-color: var(--theia-contrastBorder);
-  height: 1px;
-  border: 0;
-  margin: 0px;
-}
-
-.gs-no-recent {
-  color: var(--theia-descriptionForeground);
-}
-
-.gs-section a {
-  border: none;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.gs-section a:hover {
+.gs-view-all:hover {
   text-decoration: underline;
 }
 
-.gs-section-header {
-  font-size: var(--theia-ui-font-size2);
-  font-weight: 600;
-  margin-bottom: 5px;
+.gs-recent-list {
+  flex-grow: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.gs-section-header i {
-  padding-right: 5px;
+.gs-recent-item {
+  display: block;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--color-surface-dark);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
-.gs-sub-header {
-  color: var(--theia-descriptionForeground);
-  text-transform: capitalize;
-  font-weight: 400;
+.gs-recent-item:hover {
+  border-color: var(--color-border-dark);
+  background-color: rgba(var(--color-border-dark), 0.5);
 }
 
+.gs-recent-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.gs-recent-item-info {
+  flex: 1;
+}
+
+.gs-recent-item-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-neutral-100);
+  margin: 0 0 0.25rem 0;
+}
+
+.gs-recent-item-path {
+  font-size: 0.875rem;
+  color: var(--color-neutral-500);
+  margin: 0;
+}
+
+.gs-recent-item-time {
+  font-size: 0.75rem;
+  color: var(--color-neutral-500);
+  flex-shrink: 0;
+}
+
+/* No Recent Projects Message */
+.gs-no-recent {
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-neutral-400);
+}
+
+.gs-no-recent a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.gs-no-recent a:hover {
+  text-decoration: underline;
+}
+
+/* Preferences Container */
 .gs-preference-container {
   display: flex;
   justify-content: center;
+  padding: 1rem 0;
 }
 
 .gs-preference {
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
-.gs-float {
-  float: right;
-  width: 50%;
-  margin-top: 100px;
+.gs-preference input[type="checkbox"] {
+  cursor: pointer;
 }
 
-.gs-container.gs-aifeature-container {
-  border: 1px solid var(--theia-focusBorder);
-  padding: 15px;
+.gs-preference label {
+  cursor: pointer;
+  color: var(--color-neutral-300);
 }
 
-.shadow-pulse {
-  animation: shadowPulse 2s infinite ease-in-out;
-}
-
-@keyframes shadowPulse {
-
-  0%,
-  100% {
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .gs-layout {
+    flex-direction: column;
   }
 
-  50% {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  .gs-actions-column,
+  .gs-recent-column {
+    flex: 1 1 100%;
+  }
+}
+
+@media (min-width: 640px) {
+  .gs-main {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .gs-main {
+    padding: 2rem;
   }
 }

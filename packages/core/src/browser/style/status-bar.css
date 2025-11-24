@@ -19,7 +19,7 @@
 }
 
 #theia-statusBar {
-  background: var(--theia-statusBar-background);
+  background: #000000 !important;
   display: flex;
   min-height: var(--theia-statusBar-height);
   white-space: nowrap;
@@ -27,7 +27,7 @@
 }
 
 body.theia-no-open-workspace #theia-statusBar {
-  background: var(--theia-statusBar-noFolderBackground);
+  background: #000000 !important;
   color: var(--theia-statusBar-noFolderForeground);
   border-top: var(--theia-border-width) solid
   var(--theia-statusBar-noFolderBorder);
@@ -89,7 +89,7 @@ body.theia-no-open-workspace #theia-statusBar {
 }
 
 .theia-mod-offline #theia-statusBar {
-  background-color: var(--theia-statusBar-offlineBackground) !important;
+  background-color: #000000 !important;
 }
 
 .theia-mod-offline #theia-statusBar .area .element {
