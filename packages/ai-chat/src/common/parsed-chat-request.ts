@@ -23,10 +23,17 @@
 import { ResolvedAIVariable, ToolRequest, toolRequestToPromptText } from '@theia/ai-core';
 import { ChatRequest } from './chat-model';
 
-export const chatVariableLeader = '#';
+// Symbol leaders for chat parsing
+// /file:path/to/file.ts - file/variable tagging
+// @agent-name - agent mentions
+// ~toolName - tool/function calls
+// NOTE: Commands (previously /) are now handled differently since / is used for files
+export const chatVariableLeader = '/';
 export const chatAgentLeader = '@';
 export const chatFunctionLeader = '~';
-export const chatSubcommandLeader = '/';
+// Subcommand leader is no longer used since / is now for variables
+// If you need commands, use a different syntax or remove this entirely
+export const chatSubcommandLeader = '!';
 
 /**********************
  * INTERFACES AND TYPE GUARDS

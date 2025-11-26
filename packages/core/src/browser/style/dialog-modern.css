@@ -1,0 +1,343 @@
+/********************************************************************************
+ * Modern Dialog Styling Enhancement
+ * Applies modern, professional dark theme to dialogs and modals
+ ********************************************************************************/
+
+:root {
+  /* Dialog Variables */
+  --dialog-bg: #141a22;
+  --dialog-surface: #1a2330;
+  --dialog-border: rgba(255, 255, 255, 0.1);
+  --dialog-overlay: rgba(0, 0, 0, 0.7);
+  --dialog-text: #f8fafc;
+  --dialog-text-secondary: #94a3b8;
+  --dialog-header-bg: #0f1419;
+  --dialog-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/*-----------------------------------------------------------------------------
+| Dialog Overlay
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay {
+  z-index: 5000;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background: var(--dialog-overlay);
+  backdrop-filter: blur(8px);
+  font-size: var(--theia-ui-font-size1);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 20px;
+  animation: dialogOverlayFadeIn 0.2s ease-out;
+}
+
+@keyframes dialogOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*-----------------------------------------------------------------------------
+| Dialog Block
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay .dialogBlock {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  max-width: 600px;
+  color: var(--dialog-text);
+  background-color: var(--dialog-bg);
+  border: 1px solid var(--dialog-border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--dialog-shadow);
+  animation: dialogSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dialogSlideIn {
+  from {
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/*-----------------------------------------------------------------------------
+| Dialog Title
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay .dialogTitle {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  background-color: var(--dialog-header-bg);
+  color: var(--dialog-text);
+  padding: 16px 20px;
+  min-height: 56px;
+  border-bottom: 1px solid var(--dialog-border);
+}
+
+.lm-Widget.dialogOverlay .dialogTitle i.closeButton {
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  color: var(--dialog-text-secondary);
+  transition: all 0.2s ease;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: -6px -6px -6px 0;
+}
+
+.lm-Widget.dialogOverlay .dialogTitle i.closeButton:hover {
+  background: var(--dialog-surface);
+  color: var(--dialog-text);
+}
+
+.lm-Widget.dialogOverlay .dialogTitle i.closeButton:active {
+  transform: scale(0.95);
+}
+
+/*-----------------------------------------------------------------------------
+| Dialog Content
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay .dialogContent {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  padding: 20px;
+  white-space: pre-line;
+  max-height: 60vh;
+  overflow-y: auto;
+  color: var(--dialog-text-secondary);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Custom Scrollbar for Dialog Content */
+.lm-Widget.dialogOverlay .dialogContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lm-Widget.dialogOverlay .dialogContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lm-Widget.dialogOverlay .dialogContent::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.lm-Widget.dialogOverlay .dialogContent::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/*-----------------------------------------------------------------------------
+| Dialog Controls (Buttons)
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay .dialogControl {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: row;
+  align-content: right;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  gap: 12px;
+  min-height: auto;
+  background: var(--dialog-header-bg);
+  border-top: 1px solid var(--dialog-border);
+}
+
+.lm-Widget.dialogOverlay .dialogControl .theia-button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  min-width: 80px;
+}
+
+/* Primary Button */
+.lm-Widget.dialogOverlay .dialogControl .theia-button.main {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.lm-Widget.dialogOverlay .dialogControl .theia-button.main:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+.lm-Widget.dialogOverlay .dialogControl .theia-button.main:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Secondary Button */
+.lm-Widget.dialogOverlay .dialogControl .theia-button.secondary,
+.lm-Widget.dialogOverlay .dialogControl .theia-button:not(.main) {
+  background: var(--dialog-surface);
+  color: var(--dialog-text);
+  border-color: var(--dialog-border);
+}
+
+.lm-Widget.dialogOverlay .dialogControl .theia-button.secondary:hover,
+.lm-Widget.dialogOverlay .dialogControl .theia-button:not(.main):hover {
+  background: #1f2937;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/*-----------------------------------------------------------------------------
+| Error States
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay .error {
+  color: #ef4444;
+}
+
+.lm-Widget.dialogOverlay .error.main {
+  color: #fca5a5;
+  border-color: #ef4444;
+}
+
+.lm-Widget.dialogOverlay .error > .theia-button.main {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.lm-Widget.dialogOverlay .error > .theia-button.main:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.lm-Widget.dialogOverlay .error > .dialogErrorMessage {
+  display: block;
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  margin-top: 12px;
+  color: #fca5a5;
+  font-size: 13px;
+}
+
+/*-----------------------------------------------------------------------------
+| Warning States
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay .warn {
+  color: #f59e0b;
+}
+
+.lm-Widget.dialogOverlay .warn .theia-button.main {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+.lm-Widget.dialogOverlay .warn .theia-button.main:hover {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+}
+
+/*-----------------------------------------------------------------------------
+| Info States
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay .info {
+  color: #3b82f6;
+}
+
+.lm-Widget.dialogOverlay .info .theia-button.main {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+}
+
+/*-----------------------------------------------------------------------------
+| Input Fields in Dialogs
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay .dialogContent input[type="text"],
+.lm-Widget.dialogOverlay .dialogContent input[type="password"],
+.lm-Widget.dialogOverlay .dialogContent input[type="number"],
+.lm-Widget.dialogOverlay .dialogContent textarea,
+.lm-Widget.dialogOverlay .dialogContent select {
+  background: var(--dialog-header-bg);
+  border: 1px solid var(--dialog-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--dialog-text);
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.lm-Widget.dialogOverlay .dialogContent input:focus,
+.lm-Widget.dialogOverlay .dialogContent textarea:focus,
+.lm-Widget.dialogOverlay .dialogContent select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/*-----------------------------------------------------------------------------
+| Hidden State
+|----------------------------------------------------------------------------*/
+
+.lm-Widget.dialogOverlay.hidden {
+  display: none;
+}
+
+.lm-Widget.dialogOverlay.dialogErrorMessage {
+  display: none;
+}
+
+/*-----------------------------------------------------------------------------
+| Responsive Dialog
+|----------------------------------------------------------------------------*/
+
+@media (max-width: 640px) {
+  .lm-Widget.dialogOverlay .dialogBlock {
+    min-width: auto;
+    max-width: 90vw;
+    width: 100%;
+  }
+
+  .lm-Widget.dialogOverlay .dialogControl {
+    flex-direction: column;
+  }
+
+  .lm-Widget.dialogOverlay .dialogControl .theia-button {
+    width: 100%;
+  }
+}

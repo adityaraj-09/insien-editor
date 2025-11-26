@@ -15,26 +15,54 @@
  ********************************************************************************/
 
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-/* Root Variables - Color Palette */
+/* Root Variables - Modern Dark Theme */
 :root {
-  --color-primary: hsl(210, 100%, 65%);
-  --color-background-light: hsl(0, 0%, 100%);
-  --color-background-dark: hsl(220, 14%, 10%);
-  --color-surface-dark: hsl(220, 13%, 14%);
-  --color-border-dark: hsl(220, 10%, 22%);
-  --color-neutral-100: hsl(0, 0%, 95%);
-  --color-neutral-200: hsl(0, 0%, 85%);
-  --color-neutral-300: hsl(0, 0%, 75%);
-  --color-neutral-400: hsl(0, 0%, 60%);
-  --color-neutral-500: hsl(0, 0%, 50%);
+  /* Core Colors */
+  --gs-color-primary: #3b82f6;
+  --gs-color-primary-hover: #2563eb;
+  --gs-color-primary-subtle: rgba(59, 130, 246, 0.1);
+  --gs-color-primary-border: rgba(59, 130, 246, 0.3);
+
+  /* Background Colors */
+  --gs-bg-dark: #0a0a0a;
+  --gs-bg-surface: #0f1419;
+  --gs-bg-elevated: #141a22;
+  --gs-bg-hover: #1a2330;
+
+  /* Border Colors */
+  --gs-border-subtle: rgba(255, 255, 255, 0.06);
+  --gs-border-default: rgba(255, 255, 255, 0.1);
+  --gs-border-hover: rgba(255, 255, 255, 0.15);
+
+  /* Text Colors */
+  --gs-text-primary: #f8fafc;
+  --gs-text-secondary: #94a3b8;
+  --gs-text-muted: #64748b;
+  --gs-text-subtle: #475569;
+
+  /* Gradients */
+  --gs-gradient-glow: radial-gradient(closest-side, rgba(59, 130, 246, 0.15), transparent 70%);
+  --gs-gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+
+  /* Shadows */
+  --gs-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --gs-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --gs-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --gs-shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+
+  /* Spacing */
+  --gs-radius-sm: 8px;
+  --gs-radius-md: 12px;
+  --gs-radius-lg: 16px;
+  --gs-radius-xl: 24px;
 }
 
 /* Base Styles */
-html,
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+.gs-container,
+.gs-container * {
+  font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -43,8 +71,37 @@ body {
 .gs-container {
   display: flex;
   min-height: 100%;
-  background-color: var(--color-background-dark);
-  color: var(--color-neutral-200);
+  background-color: var(--gs-bg-dark);
+  color: var(--gs-text-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Effects */
+.gs-container::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: var(--gs-gradient-glow);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.gs-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black, transparent 70%);
+  pointer-events: none;
+  opacity: 0.4;
 }
 
 .gs-main {
@@ -53,12 +110,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .gs-content-wrapper {
   width: 100%;
-  max-width: 1152px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -70,47 +129,55 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   width: 100%;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--gs-border-subtle);
 }
 
 .gs-header-brand {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.875rem;
 }
 
 .gs-logo {
-  color: var(--color-neutral-200);
-  width: 36px;
-  height: 36px;
+  color: var(--gs-text-primary);
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
 }
 
 .gs-app-name {
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--color-neutral-100);
+  letter-spacing: -0.02em;
+  color: var(--gs-text-primary);
   margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .gs-settings-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background-color: var(--color-surface-dark);
-  border: 1px solid var(--color-border-dark);
+  background: var(--gs-bg-elevated);
+  border: 1px solid var(--gs-border-default);
   cursor: pointer;
-  transition: background-color 0.2s;
-  color: var(--color-neutral-400);
+  transition: all 0.2s ease;
+  color: var(--gs-text-muted);
   font-size: 1.125rem;
+  backdrop-filter: blur(8px);
 }
 
 .gs-settings-btn:hover {
-  background-color: var(--color-border-dark);
+  background: var(--gs-bg-hover);
+  border-color: var(--gs-border-hover);
+  color: var(--gs-text-secondary);
+  transform: rotate(30deg);
 }
 
 /* Main Content Layout */
@@ -118,66 +185,92 @@ body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2.5rem;
 }
 
 .gs-layout {
   display: flex;
-  gap: 3rem;
+  gap: 2.5rem;
   flex-grow: 1;
 }
 
 .gs-actions-column {
-  flex: 0 0 33.333%;
+  flex: 0 0 340px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.875rem;
 }
 
 .gs-recent-column {
-  flex: 0 0 66.666%;
+  flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 /* Action Cards */
 .gs-action-card {
   display: flex;
   align-items: center;
-  padding: 1.25rem;
-  border-radius: 8px;
-  background-color: var(--color-surface-dark);
-  border: 1px solid var(--color-border-dark);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--gs-radius-lg);
+  background: var(--gs-bg-surface);
+  background-image: var(--gs-gradient-surface);
+  border: 1px solid var(--gs-border-subtle);
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.gs-action-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(59, 130, 246, 0.03) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .gs-action-card:hover {
-  border-color: var(--color-primary);
+  border-color: var(--gs-color-primary-border);
+  background: var(--gs-bg-elevated);
+  transform: translateY(-2px);
+  box-shadow: var(--gs-shadow-md), var(--gs-shadow-glow);
+}
+
+.gs-action-card:hover::before {
+  opacity: 1;
 }
 
 .gs-action-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  background-color: var(--color-border-dark);
+  width: 52px;
+  height: 52px;
+  border-radius: var(--gs-radius-md);
+  background: var(--gs-bg-elevated);
+  border: 1px solid var(--gs-border-default);
   margin-right: 1.25rem;
-  transition: background-color 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .gs-action-card:hover .gs-action-icon {
-  background-color: var(--color-primary);
+  background: var(--gs-color-primary);
+  border-color: var(--gs-color-primary);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  transform: scale(1.05);
 }
 
 .gs-action-icon i {
-  font-size: 1.5rem;
-  color: var(--color-neutral-300);
-  transition: color 0.2s;
+  font-size: 1.375rem;
+  color: var(--gs-text-muted);
+  transition: all 0.3s ease;
 }
 
 .gs-action-card:hover .gs-action-icon i {
@@ -186,45 +279,56 @@ body {
 
 .gs-action-content {
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .gs-action-title {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-neutral-100);
-  margin: 0 0 0.25rem 0;
+  color: var(--gs-text-primary);
+  margin: 0 0 0.375rem 0;
+  letter-spacing: -0.01em;
 }
 
 .gs-action-description {
-  font-size: 0.875rem;
-  color: var(--color-neutral-400);
+  font-size: 0.8125rem;
+  color: var(--gs-text-muted);
   margin: 0;
+  line-height: 1.5;
 }
 
 /* Recent Projects Section */
 .gs-recent-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 1rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
 }
 
 .gs-recent-title {
-  font-size: 1.125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--color-neutral-300);
+  color: var(--gs-text-secondary);
   margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .gs-view-all {
-  font-size: 0.875rem;
-  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--gs-color-primary);
   text-decoration: none;
   cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--gs-radius-sm);
+  transition: all 0.2s ease;
 }
 
 .gs-view-all:hover {
-  text-decoration: underline;
+  background: var(--gs-color-primary-subtle);
+  text-decoration: none;
 }
 
 .gs-recent-list {
@@ -236,59 +340,82 @@ body {
 
 .gs-recent-item {
   display: block;
-  padding: 1rem;
-  border-radius: 8px;
-  background-color: var(--color-surface-dark);
+  padding: 1rem 1.25rem;
+  border-radius: var(--gs-radius-md);
+  background: var(--gs-bg-surface);
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .gs-recent-item:hover {
-  border-color: var(--color-border-dark);
-  background-color: rgba(var(--color-border-dark), 0.5);
+  border-color: var(--gs-border-default);
+  background: var(--gs-bg-elevated);
+  transform: translateX(4px);
 }
 
 .gs-recent-item-content {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
+  gap: 1rem;
 }
 
 .gs-recent-item-info {
   flex: 1;
+  min-width: 0;
 }
 
 .gs-recent-item-name {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-  color: var(--color-neutral-100);
+  color: var(--gs-text-primary);
   margin: 0 0 0.25rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .gs-recent-item-path {
-  font-size: 0.875rem;
-  color: var(--color-neutral-500);
+  font-size: 0.8125rem;
+  color: var(--gs-text-subtle);
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'SF Mono', 'Fira Code', monospace;
 }
 
 .gs-recent-item-time {
   font-size: 0.75rem;
-  color: var(--color-neutral-500);
+  color: var(--gs-text-subtle);
   flex-shrink: 0;
+  padding: 0.25rem 0.625rem;
+  background: var(--gs-bg-elevated);
+  border-radius: var(--gs-radius-sm);
 }
 
 /* No Recent Projects Message */
 .gs-no-recent {
-  padding: 2rem;
+  padding: 3rem 2rem;
   text-align: center;
-  color: var(--color-neutral-400);
+  color: var(--gs-text-muted);
+  background: var(--gs-bg-surface);
+  border-radius: var(--gs-radius-lg);
+  border: 1px dashed var(--gs-border-default);
+}
+
+.gs-no-recent p {
+  margin: 0;
+  line-height: 1.6;
 }
 
 .gs-no-recent a {
-  color: var(--color-primary);
+  color: var(--gs-color-primary);
   text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .gs-no-recent a:hover {
@@ -299,22 +426,28 @@ body {
 .gs-preference-container {
   display: flex;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--gs-border-subtle);
+  margin-top: 2rem;
 }
 
 .gs-preference {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.625rem;
 }
 
 .gs-preference input[type="checkbox"] {
   cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--gs-color-primary);
 }
 
 .gs-preference label {
   cursor: pointer;
-  color: var(--color-neutral-300);
+  color: var(--gs-text-muted);
+  font-size: 0.875rem;
 }
 
 /* Responsive Design */
@@ -323,20 +456,51 @@ body {
     flex-direction: column;
   }
 
-  .gs-actions-column,
+  .gs-actions-column {
+    flex: 1 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .gs-action-card {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 280px;
+  }
+
   .gs-recent-column {
     flex: 1 1 100%;
   }
 }
 
-@media (min-width: 640px) {
+@media (max-width: 640px) {
   .gs-main {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+
+  .gs-header {
+    margin-bottom: 2rem;
+  }
+
+  .gs-app-name {
+    font-size: 1.375rem;
+  }
+
+  .gs-actions-column {
+    flex-direction: column;
+  }
+
+  .gs-action-card {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .gs-layout {
+    gap: 1.5rem;
   }
 }
 
 @media (min-width: 768px) {
   .gs-main {
-    padding: 2rem;
+    padding: 2.5rem;
   }
 }

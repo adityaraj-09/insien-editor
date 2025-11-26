@@ -1,0 +1,385 @@
+/********************************************************************************
+ * Modern Tabs Styling Enhancement
+ * Applies modern, professional dark theme to tabs
+ ********************************************************************************/
+
+:root {
+  /* Modern Tab Variables */
+  --theia-private-horizontal-tab-height: 40px;
+  --theia-horizontal-toolbar-height: var(--theia-private-horizontal-tab-height);
+
+  /* Tab Colors */
+  --tab-bg-inactive: #0f1419;
+  --tab-bg-active: #141a22;
+  --tab-bg-hover: #1a2330;
+  --tab-border-color: rgba(255, 255, 255, 0.06);
+  --tab-border-active: rgba(59, 130, 246, 0.4);
+  --tab-text-inactive: #94a3b8;
+  --tab-text-active: #f8fafc;
+  --tab-text-hover: #cbd5e1;
+
+  /* Tab Spacing */
+  --tab-radius: 8px 8px 0 0;
+  --tab-padding: 0 16px;
+  --tab-gap: 2px;
+}
+
+/*-----------------------------------------------------------------------------
+| Enhanced Tab Bar Styling
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lm-TabBar[data-orientation="horizontal"] {
+  min-height: var(--theia-horizontal-toolbar-height);
+  background: #0a0a0a;
+  border-bottom: 1px solid var(--tab-border-color);
+}
+
+.lm-TabBar[data-orientation="horizontal"] .lm-TabBar-content {
+  display: flex;
+  gap: var(--tab-gap);
+  padding: 0 8px;
+  align-items: flex-end;
+}
+
+.lm-TabBar[data-orientation="horizontal"] .lm-TabBar-tab {
+  flex: none;
+  height: var(--theia-horizontal-toolbar-height);
+  line-height: var(--theia-horizontal-toolbar-height);
+  min-width: 120px;
+  max-width: 280px;
+  padding: var(--tab-padding);
+  align-items: center;
+  overflow: hidden;
+  border-radius: var(--tab-radius);
+  background: var(--tab-bg-inactive);
+  border: 1px solid transparent;
+  border-bottom: none;
+  margin-bottom: -1px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Tab Hover State */
+.lm-TabBar[data-orientation="horizontal"] .lm-TabBar-tab:hover:not(.lm-mod-current) {
+  background: var(--tab-bg-hover);
+  border-color: var(--tab-border-color);
+  color: var(--tab-text-hover);
+  transform: translateY(-1px);
+}
+
+/* Active Tab */
+.lm-TabBar[data-orientation="horizontal"] .lm-TabBar-tab.lm-mod-current {
+  background: var(--tab-bg-active);
+  border-color: var(--tab-border-color);
+  border-bottom-color: transparent;
+  color: var(--tab-text-active);
+  z-index: 1;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active Tab Indicator */
+.lm-TabBar[data-orientation="horizontal"] .lm-TabBar-tab.lm-mod-current::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+  border-radius: 2px 2px 0 0;
+}
+
+/* Tab Content Layout */
+.lm-TabBar[data-orientation="horizontal"] .lm-TabBar-tab .theia-tab-icon-label {
+  display: flex;
+  line-height: 1.5;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/*-----------------------------------------------------------------------------
+| Center Area Tabs (Main and Bottom Panels)
+|----------------------------------------------------------------------------*/
+
+#theia-main-content-panel {
+  background: #0a0a0a;
+}
+
+#theia-main-content-panel .lm-Widget.lm-DockPanel-widget {
+  background: var(--theia-editor-background);
+}
+
+.lm-TabBar.theia-app-centers {
+  background: #0a0a0a;
+  border-bottom: 1px solid var(--tab-border-color);
+}
+
+.lm-TabBar.theia-app-centers::after {
+  display: none;
+}
+
+#theia-main-content-panel .lm-TabBar .lm-TabBar-tab {
+  border-right: none;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  background: var(--tab-bg-inactive);
+  color: var(--tab-text-inactive);
+}
+
+#theia-main-content-panel .lm-TabBar .lm-TabBar-tab.lm-mod-current {
+  background: var(--tab-bg-active);
+  color: var(--tab-text-active);
+  border-color: var(--tab-border-color);
+  border-bottom-color: transparent;
+}
+
+/*-----------------------------------------------------------------------------
+| Tab Icons and Labels
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar .lm-TabBar-tabIcon {
+  width: 16px;
+  height: 16px;
+  line-height: 1;
+  font-size: 14px;
+  text-align: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.lm-TabBar-tab:hover .lm-TabBar-tabIcon,
+.lm-TabBar-tab.lm-mod-current .lm-TabBar-tabIcon {
+  opacity: 1;
+}
+
+.lm-TabBar .lm-TabBar-tabLabel {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.lm-TabBar-tab.lm-mod-current .lm-TabBar-tabLabel {
+  font-weight: 600;
+}
+
+/*-----------------------------------------------------------------------------
+| Tab Close Button
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar.theia-app-centers .lm-TabBar-tab.lm-mod-closable > .lm-TabBar-tabCloseIcon {
+  padding: 4px;
+  margin-left: 8px;
+  height: 20px;
+  width: 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: var(--tab-text-inactive);
+}
+
+.lm-TabBar.theia-app-centers .lm-TabBar-tab:hover > .lm-TabBar-tabCloseIcon,
+.lm-TabBar.theia-app-centers .lm-TabBar-tab.lm-mod-current > .lm-TabBar-tabCloseIcon {
+  opacity: 0.7;
+}
+
+.lm-TabBar.theia-app-centers .lm-TabBar-tab > .lm-TabBar-tabCloseIcon:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--tab-text-hover);
+}
+
+.lm-TabBar.theia-app-centers .lm-TabBar-tab > .lm-TabBar-tabCloseIcon:active {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(0.95);
+}
+
+/*-----------------------------------------------------------------------------
+| Modified/Dirty Indicator
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar-tab.theia-mod-dirty .lm-TabBar-tabCloseIcon::before {
+  content: "\ea71";
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.lm-TabBar-tab.theia-mod-dirty:not(:hover) .lm-TabBar-tabCloseIcon {
+  opacity: 1;
+}
+
+/*-----------------------------------------------------------------------------
+| Pinned Tabs
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar-tab.theia-mod-pinned {
+  min-width: 48px;
+  max-width: 48px;
+  padding: 0 12px;
+  justify-content: center;
+}
+
+.lm-TabBar-tab.theia-mod-pinned .lm-TabBar-tabLabel {
+  display: none;
+}
+
+.lm-TabBar-tab.theia-mod-pinned .lm-TabBar-tabIcon {
+  margin: 0;
+  padding: 0;
+}
+
+/*-----------------------------------------------------------------------------
+| Drag and Drop
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar-tab.lm-mod-drag-image {
+  background: var(--tab-bg-active);
+  border: 1px solid var(--tab-border-active);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(59, 130, 246, 0.3);
+  opacity: 0.9;
+  transform: rotate(2deg);
+}
+
+.lm-TabBar[data-orientation="vertical"] .lm-TabBar-tab.drop-target-top {
+  border-top-color: #3b82f6 !important;
+  border-top-width: 2px !important;
+}
+
+.lm-TabBar[data-orientation="vertical"] .lm-TabBar-tab.drop-target-bottom {
+  border-bottom-color: #3b82f6 !important;
+  border-bottom-width: 2px !important;
+}
+
+/*-----------------------------------------------------------------------------
+| Tab Label Details
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar.theia-app-centers .lm-TabBar-tabLabelDetails {
+  margin-left: 6px;
+  color: var(--tab-text-inactive);
+  font-size: 11px;
+  opacity: 0.7;
+  flex: 0 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.lm-TabBar-tab.lm-mod-current .lm-TabBar-tabLabelDetails {
+  opacity: 0.85;
+}
+
+/*-----------------------------------------------------------------------------
+| Tab Lock Indicator
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar-tabLock:after {
+  content: "\ebe7";
+  opacity: 0.6;
+  margin-left: 6px;
+  color: inherit;
+  font-family: codicon;
+  font-size: 14px;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/*-----------------------------------------------------------------------------
+| Scrollable Tab Bar
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar[data-orientation="horizontal"] .lm-TabBar-addButton {
+  width: 32px;
+  height: 32px;
+  margin: 0 4px;
+  padding: 0;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--tab-text-inactive);
+  transition: all 0.2s ease;
+}
+
+.lm-TabBar[data-orientation="horizontal"] .lm-TabBar-addButton:hover {
+  background: var(--tab-bg-hover);
+  border-color: var(--tab-border-color);
+  color: var(--tab-text-hover);
+}
+
+/*-----------------------------------------------------------------------------
+| Responsive Tab Sizing
+|----------------------------------------------------------------------------*/
+
+@media (max-width: 1024px) {
+  .lm-TabBar[data-orientation="horizontal"] .lm-TabBar-tab {
+    min-width: 100px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lm-TabBar[data-orientation="horizontal"] .lm-TabBar-tab {
+    min-width: 80px;
+    max-width: 150px;
+    padding: 0 12px;
+  }
+
+  .lm-TabBar .lm-TabBar-tabLabelDetails {
+    display: none;
+  }
+}
+
+/*-----------------------------------------------------------------------------
+| Focus States
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar-tab:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+  border-radius: var(--tab-radius);
+}
+
+/*-----------------------------------------------------------------------------
+| Tab Bar Toolbar
+|----------------------------------------------------------------------------*/
+
+.lm-TabBar-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  height: var(--theia-horizontal-toolbar-height);
+}
+
+.lm-TabBar-toolbar .theia-toolbar-item {
+  padding: 6px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--tab-text-inactive);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.lm-TabBar-toolbar .theia-toolbar-item:hover {
+  background: var(--tab-bg-hover);
+  border-color: var(--tab-border-color);
+  color: var(--tab-text-hover);
+}

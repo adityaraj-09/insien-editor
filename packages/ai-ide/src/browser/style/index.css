@@ -1,75 +1,196 @@
+/* ============================================================================
+   Modern AI IDE Configuration UI Styles
+   Redesigned with modern aesthetics and enhanced user experience
+   ============================================================================ */
+
+/* ============================================================================
+   Configuration Widget Base - Modern Container
+   ============================================================================ */
+
 .ai-configuration-widget {
-  padding: var(--theia-ui-padding);
+  padding: 20px;
+  background: var(--theia-editor-background);
 }
 
 .ai-configuration-widget [role="tablist"] {
-  overflow: scroll;
+  overflow-x: auto;
+  display: flex;
+  gap: 4px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--theia-panel-border);
 }
 
 .ai-configuration-widget [role="tablist"]::-webkit-scrollbar {
-  height: 4px;
+  height: 6px;
 }
 
-.theia-ai-settings-container {
-  padding: var(--theia-ui-padding);
+.ai-configuration-widget [role="tablist"]::-webkit-scrollbar-track {
+  background: var(--theia-editor-background);
+  border-radius: 3px;
 }
+
+.ai-configuration-widget [role="tablist"]::-webkit-scrollbar-thumb {
+  background: var(--theia-scrollbarSlider-background);
+  border-radius: 3px;
+  transition: background 0.15s ease;
+}
+
+.ai-configuration-widget [role="tablist"]::-webkit-scrollbar-thumb:hover {
+  background: var(--theia-scrollbarSlider-hoverBackground);
+}
+
+/* Modern Tab Styling */
+.ai-configuration-widget [role="tab"] {
+  padding: 8px 16px;
+  border-radius: 6px 6px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  border-bottom: none;
+}
+
+.ai-configuration-widget [role="tab"]:hover {
+  background: var(--theia-list-hoverBackground);
+}
+
+.ai-configuration-widget [role="tab"][aria-selected="true"] {
+  background: var(--theia-sideBar-background);
+  border-color: var(--theia-panel-border);
+  border-bottom-color: var(--theia-sideBar-background);
+}
+
+/* Settings Container */
+.theia-ai-settings-container {
+  padding: 20px;
+  background: var(--theia-sideBar-background);
+  border-radius: 0 8px 8px 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================================================
+   Language Model Container - Modern Select
+   ============================================================================ */
 
 .language-model-container {
-  padding-top: calc(2 * var(--theia-ui-padding));
+  padding: 16px;
+  background: var(--theia-editor-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
+  margin: 12px 0;
+  transition: all 0.15s ease;
+}
+
+.language-model-container:hover {
+  border-color: var(--theia-focusBorder);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .language-model-container .theia-select {
-  margin-left: var(--theia-ui-padding);
+  margin-left: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--theia-input-border);
+  background: var(--theia-input-background);
+  color: var(--theia-input-foreground);
+  font-size: 13px;
+  transition: all 0.15s ease;
 }
 
-.theia-settings-container
-  .settings-section-subcategory-title.ai-settings-section-subcategory-title {
-  padding-left: 0;
+.language-model-container .theia-select:focus {
+  border-color: var(--theia-focusBorder);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--theia-focusBorder);
 }
+
+/* Settings Section Subcategory */
+.theia-settings-container .settings-section-subcategory-title.ai-settings-section-subcategory-title {
+  padding-left: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--theia-foreground);
+  margin: 16px 0 12px 0;
+}
+
+/* ============================================================================
+   Template Settings - Modern Cards
+   ============================================================================ */
 
 .ai-templates {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 12px;
 }
 
 .template-renderer {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 16px;
+  background: var(--theia-editor-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.template-renderer:hover {
+  border-color: var(--theia-focusBorder);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .template-header {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--theia-foreground);
 }
 
 .template-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .template-select-label {
-  margin-right: 5px;
+  margin-right: 8px;
+  font-size: 13px;
+  color: var(--theia-descriptionForeground);
 }
 
 .template-variant-selector {
-  min-width: 120px;
+  min-width: 140px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--theia-input-border);
+  background: var(--theia-input-background);
+  color: var(--theia-input-foreground);
+  font-size: 13px;
+  transition: all 0.15s ease;
+}
+
+.template-variant-selector:focus {
+  border-color: var(--theia-focusBorder);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--theia-focusBorder);
 }
 
 .template-variant-selector.error {
   border-color: var(--theia-errorForeground);
-  background-color: var(--theia-errorBackground, rgba(255, 0, 0, 0.1));
+  background-color: var(--theia-inputValidation-errorBackground, rgba(255, 0, 0, 0.08));
   color: var(--theia-errorForeground);
 }
+
+/* ============================================================================
+   Variable Configuration - Modern Grid
+   ============================================================================ */
 
 #ai-variable-configuration-container-widget,
 #ai-agent-configuration-container-widget,
 #ai-model-aliases-configuration-widget {
-  margin-top: 5px;
+  margin-top: 12px;
 }
 
-/* Variable Settings */
 #ai-variable-configuration-container-widget ul {
   list-style: none;
   padding: 0;
@@ -79,15 +200,32 @@
 #ai-variable-configuration-container-widget .variable-item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--theia-editor-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+#ai-variable-configuration-container-widget .variable-item:hover {
+  border-color: var(--theia-focusBorder);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 #ai-variable-configuration-container-widget .variable-args {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  gap: 12px;
+  margin-top: 8px;
 }
 
-/* Agent and Model Alias Settings */
+/* ============================================================================
+   Agent Configuration - Modern Cards with Pills
+   ============================================================================ */
+
 #ai-agent-configuration-container-widget ul,
 #ai-model-aliases-configuration-widget .model-alias-configuration-list ul {
   list-style: none;
@@ -99,31 +237,37 @@
 .model-alias-configuration-main {
   display: flex;
   flex-direction: row;
+  gap: 16px;
 }
 
-#ai-agent-configuration-container-widget
-  .ai-agent-configuration-main
-  .configuration-agents-list,
+#ai-agent-configuration-container-widget .ai-agent-configuration-main .configuration-agents-list,
 #ai-model-aliases-configuration-widget .model-alias-configuration-list {
-  min-width: 160px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  padding-left: 0;
-  padding: var(--theia-ui-padding);
+  min-width: 180px;
+  background: var(--theia-sideBar-background);
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid var(--theia-panel-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .configuration-agent-panel,
 .model-alias-configuration-panel {
   flex: 1;
+  padding: 16px;
+  background: var(--theia-editor-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 #ai-variable-configuration-container-widget .variable-references,
 #ai-agent-configuration-container-widget .variable-references,
 #ai-agent-configuration-container-widget .function-references {
-  margin-left: 0.5rem;
-  padding: 0.5rem;
-  border-left: solid 1px var(--theia-tree-indentGuidesStroke);
+  margin-left: 12px;
+  padding: 12px;
+  border-left: 2px solid var(--theia-focusBorder);
+  background: var(--theia-sideBar-background);
+  border-radius: 0 6px 6px 0;
 }
 
 #ai-variable-configuration-container-widget .variable-reference,
@@ -132,28 +276,66 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 6px 8px;
+  margin: 4px 0;
+  border-radius: 6px;
+  transition: background 0.15s ease;
 }
 
+#ai-variable-configuration-container-widget .variable-reference:hover,
+#ai-agent-configuration-container-widget .variable-reference:hover,
+#ai-agent-configuration-container-widget .function-reference:hover {
+  background: var(--theia-list-hoverBackground);
+}
+
+/* Agent Tags - Modern Pills */
 .agent-tag {
-  padding: calc(var(--theia-ui-padding) * 2 / 3);
-  padding-top: 0px;
-  padding-bottom: 0px;
-  border-radius: calc(var(--theia-ui-padding) * 2 / 3);
-  background: hsla(0, 0%, 68%, 0.31);
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--theia-badge-background);
+  color: var(--theia-badge-foreground);
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.agent-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .configuration-agents-add {
-  margin-top: 3em;
+  margin-top: 24px;
   margin-left: 0;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: var(--theia-button-secondaryBackground);
+  color: var(--theia-button-secondaryForeground);
+  border: 1px solid var(--theia-button-secondaryBorder, transparent);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 13px;
+  font-weight: 500;
 }
 
-/* Prompt Fragments Configuration Styles */
+.configuration-agents-add:hover {
+  background: var(--theia-button-secondaryHoverBackground);
+  transform: translateY(-1px);
+}
+
+/* ============================================================================
+   Prompt Fragments Configuration - Modern Expandable Cards
+   ============================================================================ */
+
 .configuration-variables-list,
 .token-usage-configuration-container,
 .ai-tools-configuration-container,
 .ai-prompt-fragments-configuration {
-  padding: var(--theia-ui-padding);
-  max-width: 600px;
+  padding: 20px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -161,74 +343,100 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--theia-panelTitle-activeBorder);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--theia-panel-border);
 }
 
 .prompt-fragments-header h2 {
   margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--theia-foreground);
 }
 
 .global-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .global-action-button {
-  padding: 6px 12px;
-  background-color: transparent;
-  color: var(--theia-foreground);
-  border: 1px solid var(--theia-border);
-  border-radius: 4px;
+  padding: 8px 16px;
+  background: var(--theia-button-secondaryBackground);
+  color: var(--theia-button-secondaryForeground);
+  border: 1px solid var(--theia-panel-border);
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 12px;
-  transition: all 0.2s;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s ease;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
 }
 
 .global-action-button:hover {
-  background-color: var(--theia-list-hoverBackground);
+  background: var(--theia-button-secondaryHoverBackground);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .prompt-fragments-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
 .prompt-fragment-group {
-  border: 1px solid var(--theia-panelTitle-activeBorder);
-  border-radius: 6px;
+  border: 1px solid var(--theia-panel-border);
+  border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 15px;
-  background-color: var(--theia-editorWidget-background);
+  margin-bottom: 16px;
+  background: var(--theia-sideBar-background);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.15s ease;
+}
+
+.prompt-fragment-group:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .prompt-customization {
-  border: 1px solid var(--theia-panelTitle-activeBorder);
-  border-radius: 6px;
-  margin-bottom: 10px;
-  background-color: var(--theia-editor-background);
+  border: 1px solid var(--theia-panel-border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: var(--theia-editor-background);
+  transition: all 0.15s ease;
+}
+
+.prompt-customization:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .prompt-customization.active-customization {
-  border: 3px solid var(--theia-successBackground);
+  border: 2px solid var(--theia-charts-green);
+  box-shadow: 0 0 0 1px var(--theia-charts-green);
 }
 
 .prompt-customization-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.prompt-customization-header:hover {
+  background: var(--theia-list-hoverBackground);
 }
 
 .prompt-customization-title {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .prompt-customization-actions {
@@ -237,44 +445,56 @@
 }
 
 .prompt-customization-description {
-  padding: 0px 15px;
+  padding: 0 16px 8px 16px;
   color: var(--theia-descriptionForeground);
-  font-size: 12px;
-  margin-bottom: 5px;
+  font-size: 13px;
+  line-height: 1.5;
   font-style: italic;
 }
 
 .expansion-icon {
   color: var(--theia-descriptionForeground);
-  font-size: 14px;
+  font-size: 16px;
+  transition: transform 0.2s ease;
 }
 
+.expansion-icon.expanded {
+  transform: rotate(90deg);
+}
+
+/* Template Action Buttons - Modern Style */
 .template-action-button {
-  background-color: transparent;
+  background: transparent;
   color: var(--theia-foreground);
-  border: 1px solid var(--theia-border);
-  border-radius: 4px;
-  padding: 4px 8px;
+  border: 1px solid var(--theia-panel-border);
+  border-radius: 6px;
+  padding: 6px 12px;
   font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.15s ease;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .template-action-button:hover {
-  background-color: var(--theia-list-hoverBackground);
+  background: var(--theia-list-hoverBackground);
+  transform: translateY(-1px);
 }
 
 .template-action-button.reset-button {
   color: var(--theia-foreground);
-  border-color: var(--theia-border);
+  border-color: var(--theia-panel-border);
 }
 
 .template-action-button.config-button {
-  color: var(--theia-foreground);
-  border-color: var(--theia-border);
+  color: var(--theia-charts-blue);
+  border-color: var(--theia-charts-blue);
+}
+
+.template-action-button.config-button:hover {
+  background: rgba(0, 122, 204, 0.1);
 }
 
 .template-action-button.delete-button {
@@ -283,198 +503,227 @@
 }
 
 .template-action-button.delete-button:hover {
-  background-color: var(--theia-errorBackground);
+  background: var(--theia-errorBackground);
 }
 
+/* Badges - Modern Design */
 .badge {
-  font-size: 12px;
-  padding: 3px 8px;
+  font-size: 11px;
+  padding: 4px 10px;
   border-radius: 12px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
 }
 
 .default-variant {
-  background: hsla(0, 0%, 68%, 0.31);
-  color: var(--theia-foreground);
+  background: var(--theia-badge-background);
+  color: var(--theia-badge-foreground);
 }
 
 .active-indicator {
-  background-color: var(--theia-successBackground);
-  color: var(--theia-editor-background);
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 500;
+  background: var(--theia-charts-green);
+  color: white;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
 }
 
 .selected-indicator {
-  background-color: var(--theia-charts-blue);
-  color: var(--theia-editor-background);
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 500;
+  background: var(--theia-charts-blue);
+  color: white;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
 }
 
+/* Source URI Button */
 .source-uri-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   color: var(--theia-foreground);
-  border: 1px solid var(--theia-border);
-  border-radius: 4px;
-  height: 22px;
-  width: 22px;
+  border: 1px solid var(--theia-panel-border);
+  border-radius: 6px;
+  height: 26px;
+  width: 26px;
   margin-left: 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.15s ease;
 }
 
 .source-uri-button:hover {
-  background-color: var(--theia-list-hoverBackground);
+  background: var(--theia-list-hoverBackground);
+  transform: scale(1.1);
 }
 
 .no-fragments {
   text-align: center;
-  padding: 30px;
+  padding: 40px;
   color: var(--theia-descriptionForeground);
   font-style: italic;
+  font-size: 14px;
 }
 
+/* Validation Messages - Modern Alert Style */
 .prompt-variant-warning {
-  color: var(--theia-warningForeground);
-  background: var(--theia-warningBackground);
-  border-left: 4px solid var(--theia-warningBorder);
-  padding: 6px 12px;
-  margin-bottom: 8px;
+  color: var(--theia-editorWarning-foreground);
+  background: var(--theia-inputValidation-warningBackground);
+  border-left: 4px solid var(--theia-inputValidation-warningBorder);
+  padding: 10px 14px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  border-radius: 3px;
-  font-size: 0.95em;
+  gap: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .prompt-variant-error {
   color: var(--theia-errorForeground);
-  background: var(--theia-errorBackground);
-  border-left: 4px solid var(--theia-errorBorder);
-  padding: 6px 12px;
-  margin-bottom: 8px;
+  background: var(--theia-inputValidation-errorBackground);
+  border-left: 4px solid var(--theia-errorForeground);
+  padding: 10px 14px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  border-radius: 3px;
-  font-size: 0.95em;
+  gap: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
-/* Template content collapsable styles */
+/* Template Content Collapsible */
 .template-content-container {
-  padding: 10px;
-  background-color: var(--theia-list-focusBackground);
+  padding: 16px;
+  background: var(--theia-sideBar-background);
+  border-top: 1px solid var(--theia-panel-border);
 }
 
 .template-toggle-button {
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 5px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
 }
 
 .template-toggle-button:hover {
-  background-color: var(--theia-list-hoverBackground);
+  background: var(--theia-list-hoverBackground);
 }
 
 .template-expansion-icon {
-  margin-right: 8px;
+  margin-right: 10px;
   color: var(--theia-descriptionForeground);
-  font-size: 14px;
+  font-size: 16px;
+  transition: transform 0.2s ease;
 }
 
 .template-content {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: var(--theia-editor-inactiveSelectionBackground);
-  border-radius: 4px;
+  margin-top: 12px;
+  padding: 16px;
+  background: var(--theia-editor-background);
+  border-radius: 8px;
   overflow-x: auto;
+  border: 1px solid var(--theia-panel-border);
 }
 
 .template-content pre {
   margin: 0;
   white-space: pre-wrap;
   word-break: break-word;
-  font-family: monospace;
+  font-family: var(--theia-code-font-family);
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 1.6;
+  color: var(--theia-editor-foreground);
 }
 
+/* Agent Chips - Modern Pills */
 .agent-chips-container {
   display: flex;
-  gap: 6px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .agent-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--theia-charts-blue);
-  color: var(--theia-editor-background);
+  background: var(--theia-charts-blue);
+  color: white;
   gap: 6px;
-  padding: 6px 8px;
-  border-radius: 10px;
+  padding: 6px 12px;
+  border-radius: 16px;
   font-size: 12px;
-  font-weight: 500;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
+  transition: all 0.15s ease;
 }
 
-/* Prompt Variants improvements */
+.agent-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Prompt Fragment Section */
 .prompt-variants-container {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .prompt-fragment-section {
-  border: 1px solid var(--theia-panelTitle-activeBorder);
-  border-radius: 6px;
+  border: 1px solid var(--theia-panel-border);
+  border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 15px;
-  background-color: var(--theia-editorWidget-background);
+  margin-bottom: 16px;
+  background: var(--theia-sideBar-background);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.15s ease;
+}
+
+.prompt-fragment-section:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .prompt-fragment-section.selected-variant {
-  border: 3px solid var(--theia-charts-blue);
+  border: 2px solid var(--theia-charts-blue);
+  box-shadow: 0 0 0 1px var(--theia-charts-blue);
 }
 
 .prompt-fragment-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+  padding: 14px 18px;
   cursor: pointer;
-  background-color: var(--theia-editor-background);
-  transition: background-color 0.2s;
+  background: var(--theia-editor-background);
+  transition: background 0.15s ease;
 }
 
 .prompt-fragment-header.expanded {
-  border-bottom: 1px solid var(--theia-panelTitle-activeBorder);
+  border-bottom: 1px solid var(--theia-panel-border);
 }
 
 .prompt-fragment-header:hover {
-  background-color: var(--theia-list-hoverBackground);
+  background: var(--theia-list-hoverBackground);
 }
 
 .prompt-fragment-title {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .prompt-fragment-title h2,
 h4 {
-  margin-right: 8px;
   margin: 0;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .prompt-fragment-title .active-indicator {
@@ -482,53 +731,72 @@ h4 {
 }
 
 .prompt-fragment-body {
-  padding: 15px;
+  padding: 18px;
 }
 
 .prompt-fragment-description {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: var(--theia-descriptionForeground);
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .section-header {
-  margin: 10px 0;
+  margin: 16px 0 8px 0;
   color: var(--theia-foreground);
   font-size: 14px;
+  font-weight: 600;
 }
 
-/* MCP Configuration Styles */
+/* ============================================================================
+   MCP Configuration - Modern Server Cards
+   ============================================================================ */
+
 .mcp-configuration-title {
-  margin: 0 0 16px 0;
-  border-bottom: 1px solid var(--theia-panelTitle-activeBorder);
-  padding-bottom: 8px;
+  margin: 0 0 20px 0;
+  border-bottom: 2px solid var(--theia-panel-border);
+  padding-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .mcp-server-card {
-  border: 1px solid var(--theia-panelTitle-activeBorder);
-  border-radius: 6px;
-  padding: 12px;
-  margin-bottom: 16px;
-  background-color: var(--theia-editorWidget-background);
+  border: 1px solid var(--theia-panel-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background: var(--theia-sideBar-background);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.15s ease;
+}
+
+.mcp-server-card:hover {
+  border-color: var(--theia-focusBorder);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 .mcp-server-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .mcp-server-name {
-  font-weight: bold;
-  font-size: var(--theia-ui-font-size3);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--theia-foreground);
 }
 
 .mcp-status-badge {
-  padding: 3px 8px;
+  padding: 4px 12px;
   border-radius: 12px;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   display: inline-block;
 }
 
@@ -536,130 +804,166 @@ h4 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background-color: var(--theia-errorBackground);
+  background: var(--theia-errorBackground);
   color: var(--theia-errorForeground);
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
-  margin-left: 8px;
+  margin-left: 10px;
+  transition: all 0.15s ease;
+}
+
+.mcp-error-indicator:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .mcp-server-section {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .mcp-section-label {
-  font-weight: bold;
-  color: var(--theia-descriptionForeground);
+  font-weight: 600;
+  color: var(--theia-foreground);
+  font-size: 13px;
+  margin-bottom: 4px;
 }
 
 .mcp-code-block {
-  background-color: var(--theia-editor-background);
-  padding: 2px 4px;
-  border-radius: 3px;
-  font-family: monospace;
+  background: var(--theia-editor-background);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: var(--theia-code-font-family);
+  font-size: 12px;
+  border: 1px solid var(--theia-panel-border);
 }
 
 .mcp-env-block {
-  margin-left: 10px;
-  background-color: var(--theia-editor-background);
-  padding: 4px 8px;
-  border-radius: 3px;
-  font-family: monospace;
+  margin-left: 12px;
+  background: var(--theia-editor-background);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: var(--theia-code-font-family);
   font-size: 12px;
+  border: 1px solid var(--theia-panel-border);
+  line-height: 1.6;
 }
 
 .mcp-toggle-indicator {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 6px;
+  margin-right: 8px;
   transition: transform 0.2s ease;
+  color: var(--theia-descriptionForeground);
+}
+
+.mcp-toggle-indicator.expanded {
+  transform: rotate(90deg);
 }
 
 .mcp-tools-section {
-  margin-top: 12px;
+  margin-top: 14px;
   cursor: pointer;
   user-select: none;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.mcp-tools-section:hover {
+  background: var(--theia-list-hoverBackground);
 }
 
 .mcp-tools-list {
-  margin-left: 24px;
-  margin-top: 4px;
-  background-color: var(--theia-editor-background);
-  border-radius: 3px;
-  font-family: monospace;
+  margin-left: 28px;
+  margin-top: 8px;
+  padding: 12px;
+  background: var(--theia-editor-background);
+  border-radius: 6px;
+  font-family: var(--theia-code-font-family);
   font-size: 12px;
+  border: 1px solid var(--theia-panel-border);
+  line-height: 1.6;
 }
 
 .mcp-autostart-badge {
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 12px;
-  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--theia-badge-background);
+  color: var(--theia-badge-foreground);
 }
 
 .mcp-no-servers {
-  padding: 20px;
+  padding: 40px;
   text-align: center;
   color: var(--theia-descriptionForeground);
+  font-style: italic;
+  font-size: 14px;
 }
 
 .mcp-status-container {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .mcp-server-controls {
   display: flex;
   align-items: center;
-  margin-top: 12px;
-  border-top: 1px solid var(--theia-panelTitle-inactiveForeground);
-  padding-top: 12px;
+  margin-top: 14px;
+  border-top: 1px solid var(--theia-panel-border);
+  padding-top: 14px;
+  gap: 8px;
 }
 
 .mcp-server-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--theia-button-background);
+  background: var(--theia-button-background);
   color: var(--theia-button-foreground);
   border: none;
-  border-radius: 4px;
-  padding: 6px 8px;
-  font-size: 12px;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
-  margin-right: 10px;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .mcp-server-button:hover {
-  background-color: var(--theia-button-hoverBackground);
+  background: var(--theia-button-hoverBackground);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .mcp-server-button.play-button {
-  background-color: var(--theia-successBackground);
-  color: var(--theia-successForeground);
+  background: var(--theia-charts-green);
+  color: white;
 }
 
 .mcp-server-button.play-button:hover {
-  background-color: var(--theia-successBackground);
-  filter: brightness(1.1);
+  background: var(--theia-charts-green);
+  filter: brightness(1.15);
 }
 
 .mcp-server-button.stop-button {
-  background-color: var(--theia-errorBackground);
-  color: var(--theia-errorForeground);
+  background: var(--theia-errorForeground);
+  color: white;
 }
 
 .mcp-server-button.stop-button:hover {
-  background-color: var(--theia-errorBackground);
-  filter: brightness(1.1);
+  background: var(--theia-errorForeground);
+  filter: brightness(1.15);
 }
 
 .mcp-server-button-icon {
@@ -670,17 +974,31 @@ h4 {
 .mcp-copy-tool-button {
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 4px 8px;
   cursor: pointer;
   font-size: 12px;
   color: var(--theia-descriptionForeground);
   white-space: nowrap;
+  border-radius: 4px;
+  transition: all 0.15s ease;
 }
 
+.mcp-copy-tool-button:hover {
+  background: var(--theia-list-hoverBackground);
+  color: var(--theia-foreground);
+}
+
+/* ============================================================================
+   Welcome Message - Modern Centered Design
+   ============================================================================ */
+
 .theia-ResponseNode-Content .disable-message {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.6;
-  padding: 15px;
+  padding: 18px;
+  background: var(--theia-sideBar-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
 }
 
 .theia-WelcomeMessage {
@@ -689,53 +1007,85 @@ h4 {
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 40px 20px;
 }
 
 .theia-WelcomeMessage-Content {
   text-align: center;
-  padding: 0 18px;
-  max-width: 350px;
+  padding: 32px;
+  max-width: 480px;
+  background: var(--theia-sideBar-background);
+  border-radius: 12px;
+  border: 1px solid var(--theia-panel-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .theia-WelcomeMessage-Content h1 {
   margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--theia-foreground);
 }
 
 .theia-WelcomeMessage-Content p {
-  font-size: var(--theia-ui-font-size2);
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--theia-descriptionForeground);
+  margin: 12px 0;
 }
 
 .theia-WelcomeMessage-Content p .codicon {
-  vertical-align: sub;
+  vertical-align: middle;
+  font-size: 16px;
 }
 
 .theia-WelcomeMessage-Content em {
-  font-weight: bolder;
+  font-weight: 600;
   font-style: normal;
+  color: var(--theia-foreground);
 }
 
-/*
- * AI Tools Configuration Widget Styles
- * Only touch styles in this section for the tools configuration widget
- */
+/* ============================================================================
+   AI Tools Configuration - Modern List Design
+   ============================================================================ */
+
 .ai-tools-configuration-default-section {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  padding: 16px;
+  background: var(--theia-editor-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
 }
 
 .ai-tools-configuration-default-label {
-  font-weight: bold;
-  margin-bottom: 4px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--theia-foreground);
 }
 
 .ai-tools-configuration-default-select {
-  font-size: 14px;
-  padding: 4px;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--theia-input-border);
+  background: var(--theia-input-background);
+  color: var(--theia-input-foreground);
+  transition: all 0.15s ease;
+}
+
+.ai-tools-configuration-default-select:focus {
+  border-color: var(--theia-focusBorder);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--theia-focusBorder);
 }
 
 .ai-tools-configuration-tools-label {
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--theia-foreground);
 }
 
 .ai-tools-configuration-tools-list {
@@ -748,147 +1098,232 @@ h4 {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
-  border-radius: 4px;
-  padding: 4px;
-  transition: background 0.2s, opacity 0.2s;
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.15s ease;
+  border: 1px solid var(--theia-panel-border);
 }
 
 .ai-tools-configuration-tool-item.default {
-  opacity: 0.5;
-  background: none;
+  opacity: 0.6;
+  background: var(--theia-editor-background);
 }
 
 .ai-tools-configuration-tool-item.custom {
   opacity: 1;
-  background: var(--theia-editor-inactiveSelectionBackground);
+  background: var(--theia-sideBar-background);
+  border-color: var(--theia-focusBorder);
+}
+
+.ai-tools-configuration-tool-item:hover {
+  border-color: var(--theia-focusBorder);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 .ai-tools-configuration-tool-name {
   flex: 1;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .ai-tools-configuration-tool-select {
-  margin-right: 8px;
+  margin-right: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--theia-input-border);
+  background: var(--theia-input-background);
+  font-size: 12px;
 }
 
 .ai-tools-configuration-tool-icon {
-  font-size: 18px;
+  font-size: 20px;
+  color: var(--theia-descriptionForeground);
 }
 
-/* End AI Tools Configuration Widget Styles */
+/* ============================================================================
+   AI Model Aliases - Modern Status Indicators
+   ============================================================================ */
 
-/* AI Model Aliases and Language Model Renderer extracted styles */
 .ai-model-alias-list {
   width: 25%;
+  min-width: 200px;
 }
+
 .ai-alias-detail-title {
   padding-left: 0;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--theia-foreground);
 }
+
 .ai-alias-detail-description {
-  padding-bottom: 10px;
+  padding-bottom: 12px;
+  font-size: 13px;
+  color: var(--theia-descriptionForeground);
+  line-height: 1.6;
 }
+
 .ai-alias-detail-selected-model {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  padding: 12px;
+  background: var(--theia-editor-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
 }
+
 .ai-language-model-item-ready {
   font-style: normal;
+  font-weight: 500;
 }
+
 .ai-language-model-item-not-ready {
   font-style: italic;
+  opacity: 0.6;
 }
+
 .ai-alias-priority-item-resolved {
-  font-weight: bold;
+  font-weight: 600;
+  color: var(--theia-charts-green);
 }
+
 .ai-alias-priority-item-ready {
   font-style: inherit;
 }
+
 .ai-alias-priority-item-not-ready {
   font-style: italic;
+  opacity: 0.6;
 }
+
 .ai-alias-detail-defaults {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: var(--theia-sideBar-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
 }
+
 .ai-model-default-not-ready {
   font-style: italic;
   color: var(--theia-descriptionForeground);
+  opacity: 0.7;
 }
+
 .ai-alias-defaults-hint {
   color: var(--theia-descriptionForeground);
-  margin-top: 8px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-style: italic;
 }
+
 .ai-alias-evaluates-to-container {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin: 10px 0;
+  padding: 10px;
+  background: var(--theia-editor-background);
+  border-radius: 6px;
+  border: 1px solid var(--theia-panel-border);
 }
+
 .ai-alias-evaluates-to-label {
   font-weight: 600;
+  font-size: 13px;
 }
+
 .ai-alias-evaluates-to-value {
-  margin-left: 8px;
+  margin-left: 10px;
+  font-family: var(--theia-code-font-family);
+  font-size: 12px;
 }
+
 .ai-model-status-ready {
-  color: green;
-  margin-left: 6px;
-}
-.ai-model-status-not-ready {
-  color: red;
-  margin-left: 6px;
-}
-.ai-alias-evaluates-to-unresolved {
+  color: var(--theia-charts-green);
   margin-left: 8px;
+  font-weight: 600;
+}
+
+.ai-model-status-not-ready {
+  color: var(--theia-errorForeground);
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+.ai-alias-evaluates-to-unresolved {
+  margin-left: 10px;
   color: var(--theia-descriptionForeground);
+  font-style: italic;
 }
+
 .ai-alias-detail-agents {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: var(--theia-sideBar-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
 }
+
 .ai-alias-agent-id {
   color: var(--theia-descriptionForeground);
-  margin-left: 8px;
+  margin-left: 10px;
+  font-size: 12px;
 }
+
 .ai-alias-no-agents {
   color: var(--theia-descriptionForeground);
+  font-style: italic;
+  font-size: 13px;
 }
-/* End AI Model Aliases and Language Model Renderer extracted styles */
 
-/* Token Usage Configuration Styles */
+/* ============================================================================
+   Token Usage Configuration - Modern Table
+   ============================================================================ */
+
 .token-usage-configuration-title {
-  margin: 0 0 16px 0;
-  border-bottom: 1px solid var(--theia-widget-border);
-  padding-bottom: 8px;
+  margin: 0 0 20px 0;
+  border-bottom: 2px solid var(--theia-panel-border);
+  padding-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .token-usage-controls {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .token-usage-refresh-button {
   display: inline-flex;
   align-items: center;
-  background-color: var(--theia-button-background);
+  background: var(--theia-button-background);
   color: var(--theia-button-foreground);
   border: none;
-  border-radius: 4px;
-  padding: 6px 12px;
-  font-size: 12px;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .token-usage-refresh-button:hover {
-  background-color: var(--theia-button-hoverBackground);
+  background: var(--theia-button-hoverBackground);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .token-usage-refresh-button i {
-  margin-right: 6px;
+  margin-right: 8px;
 }
 
 .token-usage-table-container {
   overflow-x: auto;
-  border-radius: 6px;
-  background-color: var(--theia-editorWidget-background);
+  border-radius: 8px;
+  background: var(--theia-sideBar-background);
+  border: 1px solid var(--theia-panel-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .token-usage-table {
@@ -898,10 +1333,12 @@ h4 {
 
 .token-usage-header th {
   text-align: left;
-  padding: 10px;
-  background-color: var(--theia-editor-background);
-  color: var(--theia-descriptionForeground);
-  font-weight: bold;
+  padding: 14px;
+  background: var(--theia-editor-background);
+  color: var(--theia-foreground);
+  font-weight: 600;
+  font-size: 13px;
+  border-bottom: 2px solid var(--theia-panel-border);
 }
 
 .token-usage-model-column {
@@ -913,34 +1350,123 @@ h4 {
 }
 
 .token-usage-row td {
-  padding: 10px;
+  padding: 12px 14px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--theia-panel-border);
 }
 
 .token-usage-row:hover {
-  background-color: var(--theia-list-hoverBackground);
+  background: var(--theia-list-hoverBackground);
 }
 
 .token-usage-summary-row td {
-  padding: 10px;
-  background-color: var(--theia-editor-background);
+  padding: 14px;
+  background: var(--theia-editor-background);
   color: var(--theia-foreground);
+  font-weight: 600;
+  border-top: 2px solid var(--theia-panel-border);
 }
 
 .token-usage-model-cell {
   font-weight: 500;
+  color: var(--theia-foreground);
 }
 
 .token-usage-notes {
-  margin-top: 16px;
-  color: var(--theia-descriptionForeground);
+  margin-top: 20px;
+  padding: 12px;
+  background: var(--theia-sideBar-background);
+  border-radius: 8px;
+  border: 1px solid var(--theia-panel-border);
 }
 
 .token-usage-note {
   display: flex;
   align-items: center;
   font-size: 12px;
+  color: var(--theia-descriptionForeground);
+  margin: 6px 0;
+  line-height: 1.5;
 }
 
 .token-usage-note i {
-  margin-right: 8px;
+  margin-right: 10px;
+  color: var(--theia-charts-blue);
+}
+
+/* ============================================================================
+   Scrollbar Styling
+   ============================================================================ */
+
+.ai-configuration-widget ::-webkit-scrollbar,
+.theia-ai-settings-container ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.ai-configuration-widget ::-webkit-scrollbar-track,
+.theia-ai-settings-container ::-webkit-scrollbar-track {
+  background: var(--theia-editor-background);
+  border-radius: 5px;
+}
+
+.ai-configuration-widget ::-webkit-scrollbar-thumb,
+.theia-ai-settings-container ::-webkit-scrollbar-thumb {
+  background: var(--theia-scrollbarSlider-background);
+  border-radius: 5px;
+  transition: background 0.15s ease;
+}
+
+.ai-configuration-widget ::-webkit-scrollbar-thumb:hover,
+.theia-ai-settings-container ::-webkit-scrollbar-thumb:hover {
+  background: var(--theia-scrollbarSlider-hoverBackground);
+}
+
+/* ============================================================================
+   Responsive Design
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .ai-configuration-widget {
+    padding: 12px;
+  }
+
+  .theia-ai-settings-container {
+    padding: 12px;
+  }
+
+  .ai-agent-configuration-main,
+  .model-alias-configuration-main {
+    flex-direction: column;
+  }
+
+  .ai-model-alias-list {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+}
+
+/* ============================================================================
+   Accessibility Enhancements
+   ============================================================================ */
+
+.ai-configuration-widget *:focus-visible {
+  outline: 2px solid var(--theia-focusBorder);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .mcp-server-card,
+  .prompt-fragment-group,
+  .template-renderer,
+  .variable-item {
+    border-width: 2px;
+  }
+
+  .template-action-button,
+  .global-action-button,
+  .mcp-server-button {
+    border-width: 2px;
+  }
 }

@@ -50,7 +50,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('parses text with variable name', async () => {
         const req: ChatRequest = {
-            text: 'What is the #best pizza topping?'
+            text: 'What is the /best pizza topping?'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);
@@ -71,7 +71,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('parses text with variable name with argument', async () => {
         const req: ChatRequest = {
-            text: 'What is the #best:by-poll pizza topping?'
+            text: 'What is the /best:by-poll pizza topping?'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);
@@ -92,7 +92,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('parses text with variable name with numeric argument', async () => {
         const req: ChatRequest = {
-            text: '#size-class:2'
+            text: '/size-class:2'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);
@@ -106,7 +106,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('parses text with variable name with POSIX path argument', async () => {
         const req: ChatRequest = {
-            text: '#file:/path/to/file.ext'
+            text: '/file:/path/to/file.ext'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);
@@ -120,7 +120,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('parses text with variable name with Win32 path argument', async () => {
         const req: ChatRequest = {
-            text: '#file:c:\\path\\to\\file.ext'
+            text: '/file:c:\\path\\to\\file.ext'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);
@@ -176,7 +176,7 @@ describe('ChatRequestParserImpl', () => {
 
         // Create a request with the test variable
         const req: ChatRequest = {
-            text: 'Test with #testVariable:myarg'
+            text: 'Test with /testVariable:myarg'
         };
         const context: ChatContext = { variables: [] };
 
@@ -207,7 +207,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('parses simple command without arguments', async () => {
         const req: ChatRequest = {
-            text: '/hello'
+            text: '!hello'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);
@@ -221,7 +221,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('parses command with single argument', async () => {
         const req: ChatRequest = {
-            text: '/explain topic'
+            text: '!explain topic'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);
@@ -234,7 +234,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('parses command with multiple arguments', async () => {
         const req: ChatRequest = {
-            text: '/compare item1 item2'
+            text: '!compare item1 item2'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);
@@ -246,7 +246,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('parses command with quoted arguments', async () => {
         const req: ChatRequest = {
-            text: '/cmd "arg with spaces" other'
+            text: '!cmd "arg with spaces" other'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);
@@ -257,7 +257,7 @@ describe('ChatRequestParserImpl', () => {
 
     it('handles command with escaped quotes', async () => {
         const req: ChatRequest = {
-            text: '/cmd "arg with \\"quote\\"" other'
+            text: '!cmd "arg with \\"quote\\"" other'
         };
         const context: ChatContext = { variables: [] };
         const result = await parser.parseChatRequest(req, ChatAgentLocation.Panel, context);

@@ -60,10 +60,31 @@ import { SubChatWidget, SubChatWidgetFactory } from './chat-tree-view/sub-chat-w
 import { ChatInputHistoryService } from './chat-input-history';
 import { ChatInputHistoryContribution } from './chat-input-history-contribution';
 import { ChatInputModeContribution } from './chat-input-mode-contribution';
+import { ModelSelectorService, ModelSelectorServiceImpl } from './custom-chat/model-selector-service';
+import { LocalIngestionService, LocalIngestionServiceImpl } from './custom-chat/local-ingestion-service';
+import { BackendChatService, BackendChatServiceImpl } from './custom-chat/backend-chat-service';
+import { MerkleTreeService, MerkleTreeServiceImpl } from './custom-chat/merkle-tree-service';
+import { LocalIngestionContribution } from './custom-chat/local-ingestion-contribution';
 
 export default new ContainerModule((bind, _unbind, _isBound, rebind) => {
     bindViewContribution(bind, AIChatContribution);
     bind(TabBarToolbarContribution).toService(AIChatContribution);
+
+    // Model Selector Service for custom backend chat
+    bind(ModelSelectorService).to(ModelSelectorServiceImpl).inSingletonScope();
+
+    // Local Ingestion Service for auto-ingesting local folders
+    bind(LocalIngestionService).to(LocalIngestionServiceImpl).inSingletonScope();
+
+    // Backend Chat Service for sending messages to custom backend
+    bind(BackendChatService).to(BackendChatServiceImpl).inSingletonScope();
+
+    // Merkle Tree Service for building Merkle trees from local files
+    bind(MerkleTreeService).to(MerkleTreeServiceImpl).inSingletonScope();
+
+    // Local Ingestion Contribution - triggers ingestion on app start
+    bind(LocalIngestionContribution).toSelf().inSingletonScope();
+    bind(FrontendApplicationContribution).toService(LocalIngestionContribution);
 
     bind(ChatInputHistoryService).toSelf().inSingletonScope();
     bind(ChatInputHistoryContribution).toSelf().inSingletonScope();

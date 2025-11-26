@@ -15,116 +15,222 @@
  ********************************************************************************/
 
 :root {
-  --theia-statusBar-height: 22px;
+  --theia-statusBar-height: 28px;
+  --statusbar-bg: #0a0a0a;
+  --statusbar-bg-elevated: #0f1419;
+  --statusbar-border: rgba(255, 255, 255, 0.08);
+  --statusbar-text: #94a3b8;
+  --statusbar-text-hover: #f8fafc;
+  --statusbar-hover-bg: #141a22;
+  --statusbar-active-bg: rgba(59, 130, 246, 0.15);
+  --statusbar-active-border: rgba(59, 130, 246, 0.4);
 }
 
 #theia-statusBar {
-  background: #000000 !important;
+  background: var(--statusbar-bg) !important;
+  backdrop-filter: blur(12px);
   display: flex;
   min-height: var(--theia-statusBar-height);
   white-space: nowrap;
-  border-top: var(--theia-border-width) solid var(--theia-statusBar-border);
+  border-top: 1px solid var(--statusbar-border);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 100;
+}
+
+#theia-statusBar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(59, 130, 246, 0.2) 20%,
+    rgba(59, 130, 246, 0.2) 80%,
+    transparent 100%);
+  opacity: 0.5;
 }
 
 body.theia-no-open-workspace #theia-statusBar {
-  background: #000000 !important;
+  background: var(--statusbar-bg) !important;
   color: var(--theia-statusBar-noFolderForeground);
-  border-top: var(--theia-border-width) solid
-  var(--theia-statusBar-noFolderBorder);
+  border-top: 1px solid var(--statusbar-border);
 }
 
 #theia-statusBar .area {
   flex: 1;
   display: flex;
   align-items: stretch;
-  gap: var(--theia-ui-padding)
+  gap: 4px;
 }
 
 #theia-statusBar .area.left {
   justify-content: flex-start;
-  padding-left: var(--theia-ui-padding);
+  padding-left: 12px;
 }
 
 #theia-statusBar .area.right {
   justify-content: flex-end;
-  padding-right: var(--theia-ui-padding);
+  padding-right: 12px;
 }
 
 #theia-statusBar .area .element {
-  color: var(--theia-statusBar-foreground);
+  color: var(--statusbar-text);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--theia-statusBar-font-size);
+  font-size: 12px;
   min-width: var(--theia-statusBar-height);
+  padding: 0 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+#theia-statusBar .area .element.hasCommand {
+  cursor: pointer;
+}
+
+#theia-statusBar .area .element.hasCommand:hover {
+  background: var(--statusbar-hover-bg);
+  color: var(--statusbar-text-hover);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+#theia-statusBar .area .element.hasCommand:active {
+  background: var(--statusbar-active-bg);
+  border-color: var(--statusbar-active-border);
+  transform: scale(0.98);
 }
 
 #theia-statusBar .area.left .element.has-background {
-  padding-inline: var(--theia-ui-padding);
+  padding-inline: 10px;
+  background: var(--statusbar-bg-elevated);
+  border: 1px solid var(--statusbar-border);
+  margin-right: 4px;
+  border-radius: 6px;
 }
 
-#theia-statusBar .area.left .element.has-background {
-  margin-left: calc(-1 * var(--theia-ui-padding));
+#theia-statusBar .area.left .element.has-background:first-child {
+  margin-left: 0;
+}
+
+#theia-statusBar .area.left .element.has-background:hover {
+  background: var(--statusbar-hover-bg);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 /* Icons */
 #theia-statusBar .area .element .codicon {
-  /* Scaling down codicons from 16 to 14 pixels */
-  font-size: 14px;
+  font-size: 13px;
   margin: auto;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+#theia-statusBar .area .element:hover .codicon {
+  opacity: 1;
 }
 
 /* Icon with text */
 #theia-statusBar .area .element .codicon:has(+ span) {
-  margin-inline: calc(var(--theia-ui-padding) / 2);
+  margin-right: 6px;
 }
 
 /* Text labels */
-#theia-statusBar .area .element>span:not(.codicon) {
-  margin-inline: calc(var(--theia-ui-padding) / 2)
+#theia-statusBar .area .element > span:not(.codicon) {
+  margin-inline: 3px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-#theia-statusBar .area .element>span:not(.codicon):empty {
+#theia-statusBar .area .element > span:not(.codicon):empty {
   display: none;
 }
 
+/* Offline state */
 .theia-mod-offline #theia-statusBar {
-  background-color: #000000 !important;
+  background-color: var(--statusbar-bg) !important;
+  border-top-color: rgba(239, 68, 68, 0.3);
+}
+
+.theia-mod-offline #theia-statusBar::before {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(239, 68, 68, 0.3) 20%,
+    rgba(239, 68, 68, 0.3) 80%,
+    transparent 100%);
 }
 
 .theia-mod-offline #theia-statusBar .area .element {
-  color: var(--theia-statusBar-offlineForeground) !important;
+  color: #fca5a5 !important;
 }
 
+/* Compact mode */
 #theia-statusBar .area.right .element.compact-right,
 #theia-statusBar .area.right .element.compact-left + .element {
   margin-left: 0;
+  padding-left: 4px;
 }
 
 #theia-statusBar .area.left .element.compact-left {
   margin-right: 0;
+  padding-right: 4px;
 }
 
 #theia-statusBar .area.left .element.compact-right {
-  margin-left: calc(-1 * var(--theia-ui-padding));
+  margin-left: 0;
+  padding-left: 4px;
 }
 
-#theia-statusBar .area .element.hasCommand:hover {
-  cursor: pointer;
-}
-
-#theia-statusBar .area .element.hasCommand:active {
-  cursor: pointer;
-}
-
+/* Font and text rendering */
 #theia-statusBar .element {
-  /* https://css-tricks.com/os-specific-fonts-css/#article-header-id-0 */
-  /* https://github.com/Microsoft/vscode/blob/5dbdc8d19c8cf6dd10d558eabcc48bba962ea45f/src/vs/workbench/browser/media/style.css#L8-L24 */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
     "Ubuntu", "Droid Sans", sans-serif;
   font-size: 12px;
-  text-rendering: auto;
+  text-rendering: optimizeLegibility;
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Status indicators */
+#theia-statusBar .area .element[title*="Error"],
+#theia-statusBar .area .element[title*="error"] {
+  color: #ef4444;
+}
+
+#theia-statusBar .area .element[title*="Warning"],
+#theia-statusBar .area .element[title*="warning"] {
+  color: #f59e0b;
+}
+
+#theia-statusBar .area .element[title*="Success"],
+#theia-statusBar .area .element[title*="success"] {
+  color: #10b981;
+}
+
+/* Pulse animation for active elements */
+@keyframes statusbar-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+#theia-statusBar .area .element.active {
+  animation: statusbar-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Separator styling */
+#theia-statusBar .area .separator {
+  width: 1px;
+  height: 16px;
+  background: var(--statusbar-border);
+  margin: 0 8px;
+  opacity: 0.5;
 }

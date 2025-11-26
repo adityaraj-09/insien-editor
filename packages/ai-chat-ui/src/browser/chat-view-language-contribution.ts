@@ -192,9 +192,9 @@ export class ChatViewLanguageContribution implements FrontendApplicationContribu
             endColumn: position.column,
         });
 
-        // Regex that captures the variable name in contexts like "#varname" or "#var-name:args"
-        // Matches only when # is at the beginning of the string or after whitespace
-        const variableRegex = /(?:^|\s)#([\w-]*)/;
+        // Regex that captures the variable name in contexts like "/varname" or "/var-name:args"
+        // Matches only when / is at the beginning of the string or after whitespace
+        const variableRegex = /(?:^|\s)\/([\w-]*)/;
         const match = textUntilPosition.match(variableRegex);
 
         if (!match) {

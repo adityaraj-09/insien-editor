@@ -22,44 +22,82 @@
 |----------------------------------------------------------------------------*/
 
 :root {
-    /* Borders: Width and color (dark to bright) */
+    /* Modern Theme - Global Variables */
+    /* These variables provide a cohesive, modern dark theme across the editor */
 
+    /* Core Brand Colors */
+    --insien-primary: #3b82f6;
+    --insien-primary-hover: #2563eb;
+    --insien-primary-active: #1d4ed8;
+    --insien-primary-subtle: rgba(59, 130, 246, 0.1);
+    --insien-primary-border: rgba(59, 130, 246, 0.3);
+
+    /* Background Hierarchy */
+    --insien-bg-base: #0a0a0a;
+    --insien-bg-surface: #0f1419;
+    --insien-bg-elevated: #141a22;
+    --insien-bg-hover: #1a2330;
+
+    /* Border System */
+    --insien-border-subtle: rgba(255, 255, 255, 0.04);
+    --insien-border-default: rgba(255, 255, 255, 0.08);
+    --insien-border-hover: rgba(255, 255, 255, 0.12);
+    --insien-border-strong: rgba(255, 255, 255, 0.16);
+
+    /* Text Hierarchy */
+    --insien-text-primary: #f8fafc;
+    --insien-text-secondary: #cbd5e1;
+    --insien-text-tertiary: #94a3b8;
+    --insien-text-muted: #64748b;
+    --insien-text-subtle: #475569;
+
+    /* Status Colors */
+    --insien-success: #10b981;
+    --insien-warning: #f59e0b;
+    --insien-error: #ef4444;
+    --insien-info: #3b82f6;
+
+    /* Semantic Colors */
+    --insien-success-bg: rgba(16, 185, 129, 0.1);
+    --insien-warning-bg: rgba(245, 158, 11, 0.1);
+    --insien-error-bg: rgba(239, 68, 68, 0.1);
+    --insien-info-bg: rgba(59, 130, 246, 0.1);
+
+    /* Borders: Width and color */
     --theia-border-width: 1px;
     --theia-panel-border-width: 1px;
 
-    /* UI fonts: Family, size and color (bright to dark)
+    /* UI fonts: Family, size and color
      ---------------------------------------------------
      The UI font CSS variables are used for the typography all of the Theia
      user interface elements that are not directly user-generated content.
    */
-
     --theia-ui-font-scale-factor: 1.2;
-  --theia-ui-font-size0: calc(
-    var(--theia-ui-font-size1) / var(--theia-ui-font-scale-factor)
-  );
-  --theia-ui-font-size1: 13px; /* Base font size */
-  --theia-ui-font-size2: calc(
-    var(--theia-ui-font-size1) * var(--theia-ui-font-scale-factor)
-  );
-  --theia-ui-font-size3: calc(
-    var(--theia-ui-font-size2) * var(--theia-ui-font-scale-factor)
-  );
-  --theia-ui-icon-font-size: 14px; /* Ensures px perfect FontAwesome icons */
-    --theia-ui-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --theia-ui-font-size0: calc(
+        var(--theia-ui-font-size1) / var(--theia-ui-font-scale-factor)
+    );
+    --theia-ui-font-size1: 13px; /* Base font size */
+    --theia-ui-font-size2: calc(
+        var(--theia-ui-font-size1) * var(--theia-ui-font-scale-factor)
+    );
+    --theia-ui-font-size3: calc(
+        var(--theia-ui-font-size2) * var(--theia-ui-font-scale-factor)
+    );
+    --theia-ui-icon-font-size: 14px; /* Ensures px perfect FontAwesome icons */
+    --theia-ui-font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 
     /* Content fonts: Family, size and color (bright to dark)
      Content font variables are used for typography of user-generated content.
    */
-
     --theia-content-font-size: 13px;
     --theia-content-line-height: 22px;
 
     --theia-code-font-size: 13px;
     --theia-code-line-height: 17px;
     --theia-code-padding: 5px;
-    --theia-code-font-family: Menlo, Monaco, Consolas, "Droid Sans Mono",
+    --theia-code-font-family: 'SF Mono', 'Fira Code', 'Menlo', Monaco, Consolas, "Droid Sans Mono",
         "Courier New", monospace, "Droid Sans Fallback";
-    --theia-monospace-font-family: monospace;
+    --theia-monospace-font-family: 'SF Mono', 'Fira Code', monospace;
     --theia-ui-padding: 6px;
 
     /* Icons */
@@ -72,8 +110,27 @@
     /* Statusbar */
     --theia-statusBar-font-size: 12px;
 
-    /* Opacity for disabled mod  */
+    /* Opacity for disabled mod */
     --theia-mod-disabled-opacity: 0.4;
+
+    /* Modern Shadows */
+    --insien-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --insien-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --insien-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --insien-shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+
+    /* Border Radius */
+    --insien-radius-sm: 6px;
+    --insien-radius-md: 8px;
+    --insien-radius-lg: 12px;
+    --insien-radius-xl: 16px;
+    --insien-radius-full: 9999px;
+
+    /* Transitions */
+    --insien-transition-fast: 0.15s ease;
+    --insien-transition-base: 0.2s ease;
+    --insien-transition-slow: 0.3s ease;
+    --insien-transition-spring: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html,
@@ -86,9 +143,11 @@ body {
     padding: 0;
     overflow: hidden;
     font-family: var(--theia-ui-font-family);
-    background: var(--theia-editor-background);
-    color: var(--theia-foreground);
-    border: 1px solid var(--theia-window-activeBorder);
+    background: var(--insien-bg-base);
+    color: var(--insien-text-primary);
+    border: 1px solid var(--insien-border-default);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body:window-inactive,
@@ -327,9 +386,12 @@ button.secondary[disabled],
 @import "./os.css";
 @import "./dockpanel.css";
 @import "./dialog.css";
+@import "./dialog-modern.css";
 @import "./menus.css";
 @import "./sidepanel.css";
+@import "./sidepanel-modern.css";
 @import "./tabs.css";
+@import "./tabs-modern.css";
 @import "./scrollbars.css";
 @import "./tree.css";
 @import "./status-bar.css";

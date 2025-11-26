@@ -19,6 +19,8 @@ import { PreferenceContribution } from '@theia/core';
 import { AgentSettingsPreferenceSchema } from '@theia/ai-core/lib/common/agent-preferences';
 import { aiCorePreferenceSchema } from '@theia/ai-core/lib/common/ai-core-preferences';
 
+import '../../src/browser/style/ai-preferences.css';
+
 export default new ContainerModule(bind => {
     bind(PreferenceContribution).toConstantValue({ schema: AgentSettingsPreferenceSchema });
     bind(PreferenceContribution).toConstantValue({ schema: aiCorePreferenceSchema });

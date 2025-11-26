@@ -1,0 +1,495 @@
+/* ============================================================================
+   Modern AI Preferences UI Styles
+   Enhanced styling for AI settings in the preferences panel
+   ============================================================================ */
+
+/* AI Preferences Container - Modern Card Design */
+.preferences-tree-container .preference-category-list-container {
+  background: var(--theia-editor-background);
+}
+
+/* AI Feature Section Headers */
+.preference-category-list-container [id*="ai-features"],
+.preference-category-list-container [id*="ai."] {
+  border-radius: 8px;
+  margin: 8px 0;
+  transition: all 0.15s ease;
+}
+
+/* AI Preference Items - Modern Look */
+.single-pref[id*="ai-features"],
+.single-pref[id*="ai."] {
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--theia-sideBar-background);
+  border: 1px solid var(--theia-panel-border);
+  margin: 8px 0;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.single-pref[id*="ai-features"]:hover,
+.single-pref[id*="ai."]:hover {
+  border-color: var(--theia-focusBorder);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* AI Preference Labels - Enhanced Typography */
+.single-pref[id*="ai-features"] .pref-name,
+.single-pref[id*="ai."] .pref-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--theia-foreground);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+/* AI Preference Descriptions - Better Readability */
+.single-pref[id*="ai-features"] .pref-description,
+.single-pref[id*="ai."] .pref-description {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--theia-descriptionForeground);
+  margin-top: 6px;
+}
+
+/* AI Preference Input Controls - Modern Design */
+.single-pref[id*="ai-features"] input[type="text"],
+.single-pref[id*="ai-features"] input[type="number"],
+.single-pref[id*="ai-features"] select,
+.single-pref[id*="ai."] input[type="text"],
+.single-pref[id*="ai."] input[type="number"],
+.single-pref[id*="ai."] select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--theia-input-border);
+  background: var(--theia-input-background);
+  color: var(--theia-input-foreground);
+  font-size: 13px;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.single-pref[id*="ai-features"] input[type="text"]:focus,
+.single-pref[id*="ai-features"] input[type="number"]:focus,
+.single-pref[id*="ai-features"] select:focus,
+.single-pref[id*="ai."] input[type="text"]:focus,
+.single-pref[id*="ai."] input[type="number"]:focus,
+.single-pref[id*="ai."] select:focus {
+  border-color: var(--theia-focusBorder);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--theia-focusBorder), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* AI Preference Checkboxes - Modern Toggle Style */
+.single-pref[id*="ai-features"] input[type="checkbox"],
+.single-pref[id*="ai."] input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+/* AI Preference Buttons - Enhanced Style */
+.single-pref[id*="ai-features"] button,
+.single-pref[id*="ai."] button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--theia-button-background);
+  color: var(--theia-button-foreground);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.single-pref[id*="ai-features"] button:hover,
+.single-pref[id*="ai."] button:hover {
+  background: var(--theia-button-hoverBackground);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.single-pref[id*="ai-features"] button:active,
+.single-pref[id*="ai."] button:active {
+  transform: translateY(0);
+}
+
+/* AI Preference Categories - Modern Sections */
+.preference-category-list-container .preference-category[id*="ai-features"],
+.preference-category-list-container .preference-category[id*="ai."] {
+  background: var(--theia-sideBar-background);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+  border: 1px solid var(--theia-panel-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* AI Category Headers - Enhanced Typography */
+.preference-category[id*="ai-features"] .preference-category-header,
+.preference-category[id*="ai."] .preference-category-header {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--theia-foreground);
+  padding: 8px 0;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--theia-panel-border);
+  letter-spacing: -0.02em;
+}
+
+/* AI Preference Tree Items */
+.preference-tree-node[id*="ai-features"],
+.preference-tree-node[id*="ai."] {
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.preference-tree-node[id*="ai-features"]:hover,
+.preference-tree-node[id*="ai."]:hover {
+  background: var(--theia-list-hoverBackground);
+}
+
+.preference-tree-node[id*="ai-features"].selected,
+.preference-tree-node[id*="ai."].selected {
+  background: var(--theia-list-activeSelectionBackground);
+  color: var(--theia-list-activeSelectionForeground);
+  font-weight: 500;
+}
+
+/* AI Preference Expandable Sections */
+.preference-tree-node[id*="ai-features"] .theia-ExpansionToggle,
+.preference-tree-node[id*="ai."] .theia-ExpansionToggle {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.preference-tree-node[id*="ai-features"] .theia-ExpansionToggle:hover,
+.preference-tree-node[id*="ai."] .theia-ExpansionToggle:hover {
+  background: var(--theia-toolbar-hoverBackground);
+}
+
+/* AI Preference Arrays/Objects - Modern List Design */
+.single-pref[id*="ai-features"] .preference-array-container,
+.single-pref[id*="ai-features"] .preference-object-container,
+.single-pref[id*="ai."] .preference-array-container,
+.single-pref[id*="ai."] .preference-object-container {
+  background: var(--theia-editor-background);
+  border: 1px solid var(--theia-panel-border);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.single-pref[id*="ai-features"] .preference-array-element,
+.single-pref[id*="ai-features"] .preference-object-property,
+.single-pref[id*="ai."] .preference-array-element,
+.single-pref[id*="ai."] .preference-object-property {
+  background: var(--theia-sideBar-background);
+  border: 1px solid var(--theia-input-border);
+  border-radius: 6px;
+  padding: 12px;
+  margin: 8px 0;
+  transition: all 0.15s ease;
+}
+
+.single-pref[id*="ai-features"] .preference-array-element:hover,
+.single-pref[id*="ai-features"] .preference-object-property:hover,
+.single-pref[id*="ai."] .preference-array-element:hover,
+.single-pref[id*="ai."] .preference-object-property:hover {
+  border-color: var(--theia-focusBorder);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* AI Preference Action Buttons - Modern Icon Buttons */
+.single-pref[id*="ai-features"] .preference-array-element-actions,
+.single-pref[id*="ai."] .preference-array-element-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.single-pref[id*="ai-features"] .preference-array-element-actions button,
+.single-pref[id*="ai."] .preference-array-element-actions button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--theia-button-secondaryBackground);
+  color: var(--theia-button-secondaryForeground);
+}
+
+.single-pref[id*="ai-features"] .preference-array-element-actions button:hover,
+.single-pref[id*="ai."] .preference-array-element-actions button:hover {
+  background: var(--theia-button-secondaryHoverBackground);
+}
+
+/* AI Preference File Picker - Enhanced Style */
+.single-pref[id*="ai-features"] .preference-file-input,
+.single-pref[id*="ai."] .preference-file-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.single-pref[id*="ai-features"] .preference-file-input input,
+.single-pref[id*="ai."] .preference-file-input input {
+  flex: 1;
+}
+
+.single-pref[id*="ai-features"] .preference-file-input button,
+.single-pref[id*="ai."] .preference-file-input button {
+  flex-shrink: 0;
+}
+
+/* AI Preference Validation Errors - Modern Alert Style */
+.single-pref[id*="ai-features"] .preference-validation-error,
+.single-pref[id*="ai."] .preference-validation-error {
+  background: var(--theia-inputValidation-errorBackground);
+  border: 1px solid var(--theia-inputValidation-errorBorder);
+  color: var(--theia-errorForeground);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 8px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.single-pref[id*="ai-features"] .preference-validation-warning,
+.single-pref[id*="ai."] .preference-validation-warning {
+  background: var(--theia-inputValidation-warningBackground);
+  border: 1px solid var(--theia-inputValidation-warningBorder);
+  color: var(--theia-editorWarning-foreground);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 8px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* AI Preference Modified Indicator - Visual Feedback */
+.single-pref[id*="ai-features"].modified,
+.single-pref[id*="ai."].modified {
+  border-left: 3px solid var(--theia-charts-blue);
+  padding-left: 13px;
+}
+
+.single-pref[id*="ai-features"].modified .pref-name::after,
+.single-pref[id*="ai."].modified .pref-name::after {
+  content: " *";
+  color: var(--theia-charts-blue);
+  font-weight: 700;
+}
+
+/* AI Preference Reset Button - Modern Style */
+.single-pref[id*="ai-features"] .preference-reset-button,
+.single-pref[id*="ai."] .preference-reset-button {
+  background: var(--theia-button-secondaryBackground);
+  color: var(--theia-button-secondaryForeground);
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-left: 8px;
+  transition: all 0.15s ease;
+}
+
+.single-pref[id*="ai-features"] .preference-reset-button:hover,
+.single-pref[id*="ai."] .preference-reset-button:hover {
+  background: var(--theia-button-secondaryHoverBackground);
+}
+
+/* AI Preference Search Results - Enhanced Highlighting */
+.preference-tree-node[id*="ai-features"].search-match,
+.preference-tree-node[id*="ai."].search-match {
+  background: var(--theia-list-highlightBackground);
+  border-radius: 6px;
+}
+
+/* AI Preference JSON Editor - Modern Code Style */
+.single-pref[id*="ai-features"] .preference-json-input,
+.single-pref[id*="ai."] .preference-json-input {
+  font-family: var(--theia-code-font-family);
+  font-size: var(--theia-code-font-size);
+  background: var(--theia-editor-background);
+  border: 1px solid var(--theia-panel-border);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--theia-editor-foreground);
+  line-height: 1.6;
+  transition: all 0.15s ease;
+}
+
+.single-pref[id*="ai-features"] .preference-json-input:focus,
+.single-pref[id*="ai."] .preference-json-input:focus {
+  border-color: var(--theia-focusBorder);
+  box-shadow: 0 0 0 1px var(--theia-focusBorder);
+  outline: none;
+}
+
+/* AI Preference Dropdown - Modern Select Style */
+.single-pref[id*="ai-features"] .preference-select-container,
+.single-pref[id*="ai."] .preference-select-container {
+  position: relative;
+}
+
+.single-pref[id*="ai-features"] select,
+.single-pref[id*="ai."] select {
+  appearance: none;
+  padding-right: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* AI Model Settings - Special Styling for Model Configuration */
+.single-pref[id*="modelSettings"],
+.single-pref[id*="languageModel"] {
+  background: linear-gradient(135deg, var(--theia-sideBar-background) 0%, var(--theia-editor-background) 100%);
+  border-left: 3px solid var(--theia-charts-purple);
+  padding-left: 13px;
+}
+
+/* AI Agent Settings - Special Styling for Agent Configuration */
+.single-pref[id*="agentSettings"] {
+  background: linear-gradient(135deg, var(--theia-sideBar-background) 0%, var(--theia-editor-background) 100%);
+  border-left: 3px solid var(--theia-charts-orange);
+  padding-left: 13px;
+}
+
+/* AI Prompt Templates - Special Styling */
+.single-pref[id*="promptTemplates"] {
+  background: linear-gradient(135deg, var(--theia-sideBar-background) 0%, var(--theia-editor-background) 100%);
+  border-left: 3px solid var(--theia-charts-green);
+  padding-left: 13px;
+}
+
+/* AI Notifications Settings - Special Styling */
+.single-pref[id*="notifications"][id*="ai"] {
+  background: linear-gradient(135deg, var(--theia-sideBar-background) 0%, var(--theia-editor-background) 100%);
+  border-left: 3px solid var(--theia-charts-blue);
+  padding-left: 13px;
+}
+
+/* Scrollbar Styling for AI Preferences */
+.preferences-tree-container:has([id*="ai-features"]) ::-webkit-scrollbar,
+.preferences-tree-container:has([id*="ai."]) ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.preferences-tree-container:has([id*="ai-features"]) ::-webkit-scrollbar-track,
+.preferences-tree-container:has([id*="ai."]) ::-webkit-scrollbar-track {
+  background: var(--theia-editor-background);
+  border-radius: 5px;
+}
+
+.preferences-tree-container:has([id*="ai-features"]) ::-webkit-scrollbar-thumb,
+.preferences-tree-container:has([id*="ai."]) ::-webkit-scrollbar-thumb {
+  background: var(--theia-scrollbarSlider-background);
+  border-radius: 5px;
+  transition: background 0.15s ease;
+}
+
+.preferences-tree-container:has([id*="ai-features"]) ::-webkit-scrollbar-thumb:hover,
+.preferences-tree-container:has([id*="ai."]) ::-webkit-scrollbar-thumb:hover {
+  background: var(--theia-scrollbarSlider-hoverBackground);
+}
+
+/* AI Preference Tooltips - Modern Info Style */
+.single-pref[id*="ai-features"] .preference-tooltip,
+.single-pref[id*="ai."] .preference-tooltip {
+  background: var(--theia-editorWidget-background);
+  border: 1px solid var(--theia-editorWidget-border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+/* AI Preference Loading States */
+.single-pref[id*="ai-features"].loading,
+.single-pref[id*="ai."].loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.single-pref[id*="ai-features"].loading::after,
+.single-pref[id*="ai."].loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--theia-progressBar-background);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design for AI Preferences */
+@media (max-width: 768px) {
+  .single-pref[id*="ai-features"],
+  .single-pref[id*="ai."] {
+    padding: 12px;
+  }
+
+  .single-pref[id*="ai-features"] .pref-name,
+  .single-pref[id*="ai."] .pref-name {
+    font-size: 13px;
+  }
+
+  .single-pref[id*="ai-features"] input,
+  .single-pref[id*="ai-features"] select,
+  .single-pref[id*="ai."] input,
+  .single-pref[id*="ai."] select {
+    font-size: 12px;
+  }
+}
+
+/* Accessibility Enhancements */
+.single-pref[id*="ai-features"]:focus-within,
+.single-pref[id*="ai."]:focus-within {
+  outline: 2px solid var(--theia-focusBorder);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .single-pref[id*="ai-features"],
+  .single-pref[id*="ai."] {
+    border-width: 2px;
+  }
+
+  .single-pref[id*="ai-features"] input,
+  .single-pref[id*="ai-features"] select,
+  .single-pref[id*="ai."] input,
+  .single-pref[id*="ai."] select {
+    border-width: 2px;
+  }
+}

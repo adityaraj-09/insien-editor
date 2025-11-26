@@ -42,8 +42,8 @@ import { ILogger } from '@theia/core';
 const agentReg = /^@([\w_\-\.]+)(?=(\s|$|\b))/i; // An @-agent
 const functionReg = /^~([\w_\-\.]+)(?=(\s|$|\b))/i; // A ~ tool function
 const functionPromptFormatReg = /^\~\{\s*(.*?)\s*\}/i; // A ~{} prompt-format tool function
-const variableReg = /^#([\w_\-]+)(?::([\w_\-_\/\\.:]+))?(?=(\s|$|\b))/i; // A #-variable with an optional : arg (#file:workspace/path/name.ext)
-const commandReg = /^\/([\w_\-]+)(?:\s+(.+?))?(?=\s*$)/; // A /-command with optional arguments (/commandname arg1 arg2)
+const variableReg = /^\/([\w_\-]+)(?::([\w_\-_\/\\.:]+))?(?=(\s|$|\b))/i; // A /-variable with an optional : arg (/file:workspace/path/name.ext)
+const commandReg = /^!([\w_\-]+)(?:\s+(.+?))?(?=\s*$)/; // A !-command with optional arguments (!commandname arg1 arg2)
 
 export const ChatRequestParser = Symbol('ChatRequestParser');
 export interface ChatRequestParser {
@@ -117,7 +117,7 @@ export class ChatRequestParserImpl implements ChatRequestParser {
 
             if (previousChar.match(/\s/) || i === 0) {
                 if (char === chatSubcommandLeader) {
-                    // Try to parse as command - commands are syntactic sugar for #prompt:commandName|args
+                    // Try to parse as command - commands are syntactic sugar for /prompt:commandName|args
                     const commandPart = this.tryToParseCommand(
                         message.slice(i),
                         i,
@@ -267,7 +267,7 @@ export class ChatRequestParserImpl implements ChatRequestParser {
     /**
      * Try to parse a command at the start of the given message.
      *
-     * Commands are syntactic sugar for `#prompt:commandName|args`.
+     * Commands are syntactic sugar for `/prompt:commandName|args`.
      * The prompt variable resolver will handle the actual resolution.
      */
     protected tryToParseCommand(
